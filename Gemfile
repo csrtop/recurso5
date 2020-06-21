@@ -47,7 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   #add csrtop para deploy
-  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano', '3.4.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', github: 'capistrano/rails'
   gem 'capistrano-rails-console'
