@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b No club:
+  = @club.no_club
+%p
+  %b Nombre:
+  = @club.nombre
+
+= link_to 'Edit', edit_club_path(@club)
+\|
+= link_to 'Back', clubes_path

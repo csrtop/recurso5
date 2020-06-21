@@ -1,0 +1,23 @@
+%h1 Listing clubes
+.page-header
+%table.table.table-striped
+  %thead
+    %tr 
+      %th No club
+      %th Nombre
+      /%th
+      %th
+      %th
+
+  %tbody
+    - @clubes.each do |club|
+      %tr
+        %td= club.no_club
+        %td= club.nombre
+        /%td= link_to 'Show', club, class: 'btn btn-success btn-sm'
+        %td= link_to 'Edit', edit_club_path(club), class: 'btn btn-warning btn-sm'
+        %td= link_to 'Destroy', club, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Club', new_club_path, class:'btn btn-primary'
