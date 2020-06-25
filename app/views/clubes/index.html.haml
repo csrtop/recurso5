@@ -14,7 +14,7 @@
       %tr
         %td= club.no_club
         %td= club.nombre
-        /%td= link_to 'Show', club, class: 'btn btn-success btn-sm'
+        /%td= link_to 'Productos', club_productos_path(club), class: 'btn btn-success btn-sm'
         %td= link_to 'Edit', edit_club_path(club), class: 'btn btn-warning btn-sm'
         %td= link_to 'Destroy', club, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' }
 

@@ -1,0 +1,24 @@
+%h1 Listing responsables
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Responsable
+      %th Club
+      %th
+      %th
+      %th
+
+  %tbody
+    - @responsables.each do |responsable|
+      %tr
+        %td= responsable.responsable
+        %td= responsable.club.no_club
+        %td= link_to 'Show', responsable
+        %td= link_to 'Edit', edit_responsable_path(responsable)
+        %td= link_to 'Destroy', responsable, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Responsable', new_responsable_path

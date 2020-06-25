@@ -7,12 +7,14 @@
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 inflect.irregular 'club', 'clubes'
-inflect.irregular 'departamento', 'departamentos'
-inflect.irregular 'certificado', 'certificados'
-inflect.irregular 'permiso', 'permisos'
-inflect.irregular 'genero', 'generos'
-inflect.irregular 'puesto', 'puestos'
-inflect.irregular 'examen', 'examenes'
+inflect.irregular 'tipo_entrega', 'tipos_entregas'
+inflect.irregular 'pedido', 'pedidos'
+inflect.irregular 'responsable', 'responsables'
+inflect.irregular 'entrega', 'entregas'
+inflect.irregular 'rol', 'roles'
+inflect.irregular 'producto', 'productos'
+inflect.irregular 'usuario', 'usuarios'
+inflect.irregular 'ubicacion', 'ubicaciones'
 
 #   inflect.uncountable %w( fish sheep )
  end

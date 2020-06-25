@@ -1,0 +1,23 @@
+= form_for @producto do |f|
+  - if @producto.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@producto.errors.count, "error")} prohibited this producto from being saved:"
+      %ul
+        - @producto.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :item
+    = f.number_field :item
+  .field
+    = f.label :descripcion
+    = f.text_field :descripcion
+  .field
+    = f.label :pasillo
+    = f.text_field :pasillo
+  .field
+    = f.label :club_id
+    = f.collection_select :club_id, Club.all, :id, :no_club, {prompt: "seleccione club"}
+    /= f.text_field :club
+  .actions
+    = f.submit 'Save'

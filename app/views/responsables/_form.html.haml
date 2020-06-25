@@ -1,0 +1,16 @@
+= form_for @responsable do |f|
+  - if @responsable.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@responsable.errors.count, "error")} prohibited this responsable from being saved:"
+      %ul
+        - @responsable.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :responsable
+    = f.text_field :responsable
+  .field
+    = f.label :club
+    = f.collection_select :club_id, Club.all, :id, :no_club, {prompt: "seleccione club"}
+  .actions
+    = f.submit 'Save'

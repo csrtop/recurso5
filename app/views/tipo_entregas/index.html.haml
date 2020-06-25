@@ -1,0 +1,22 @@
+%h1 Listing tipo_entregas
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Entregado por
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tipo_entregas.each do |tipo_entrega|
+      %tr
+        %td= tipo_entrega.entregado_por
+        %td= link_to 'Show', tipo_entrega
+        %td= link_to 'Edit', edit_tipo_entrega_path(tipo_entrega)
+        %td= link_to 'Destroy', tipo_entrega, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tipo entrega', new_tipo_entrega_path

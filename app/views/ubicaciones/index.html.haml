@@ -1,0 +1,22 @@
+%h1 Listing ubicaciones
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Ubicacion
+      %th
+      %th
+      %th
+
+  %tbody
+    - @ubicaciones.each do |ubicacion|
+      %tr
+        %td= ubicacion.ubicacion
+        %td= link_to 'Show', ubicacion
+        %td= link_to 'Edit', edit_ubicacion_path(ubicacion)
+        %td= link_to 'Destroy', ubicacion, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Ubicacion', new_ubicacion_path

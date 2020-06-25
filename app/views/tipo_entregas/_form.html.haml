@@ -1,0 +1,13 @@
+= form_for @tipo_entrega do |f|
+  - if @tipo_entrega.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tipo_entrega.errors.count, "error")} prohibited this tipo_entrega from being saved:"
+      %ul
+        - @tipo_entrega.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :entregado_por
+    = f.text_field :entregado_por
+  .actions
+    = f.submit 'Save'

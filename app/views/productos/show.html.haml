@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Item:
+  = @producto.item
+%p
+  %b Descripcion:
+  = @producto.descripcion
+%p
+  %b Pasillo:
+  = @producto.pasillo
+%p
+  %b Club:
+  = @producto.club.nombre
+
+= link_to 'Edit', edit_producto_path(@producto)
+\|
+= link_to 'Back', productos_path

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Entregado por:
+  = @tipo_entrega.entregado_por
+
+= link_to 'Edit', edit_tipo_entrega_path(@tipo_entrega)
+\|
+= link_to 'Back', tipo_entregas_path

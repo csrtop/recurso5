@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Responsable:
+  = @responsable.responsable
+%p
+  %b Club:
+  = @responsable.club.no_club
+
+= link_to 'Edit', edit_responsable_path(@responsable)
+\|
+= link_to 'Back', responsables_path

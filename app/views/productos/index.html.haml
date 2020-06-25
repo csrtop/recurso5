@@ -1,0 +1,28 @@
+%h1 Listing productos
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Item
+      %th Descripcion
+      %th Pasillo
+      %th Club
+      %th
+      %th
+      %th
+
+  %tbody
+    - @productos.each do |producto|
+      %tr
+        %td= producto.item
+        %td= producto.descripcion
+        %td= producto.pasillo
+        %td= producto.club.no_club
+        %td= link_to 'Show', producto
+        %td= link_to 'Edit', edit_producto_path(producto)
+        %td= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Producto', new_producto_path
