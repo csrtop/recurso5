@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Orden:
+  = @pedido.orden
+%p
+  %b Oms:
+  = @pedido.OMS
+%p
+  %b No items:
+  = @pedido.no_items
+%p
+  %b Socio:
+  = @pedido.socio
+%p
+  %b Fecha orden:
+  = @pedido.fecha_orden
+%p
+  %b Ubicacion:
+  = @pedido.ubicacion.ubicacion
+%p
+  %b Tipo entrega:
+  = @pedido.tipo_entrega
+%p
+  %b Responsable:
+  = @pedido.responsable
+%p
+  %b Club:
+  = @pedido.club
+
+= link_to 'Edit', edit_pedido_path(@pedido)
+\|
+= link_to 'Back', pedidos_path

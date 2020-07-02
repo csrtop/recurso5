@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  orden: 1
+  OMS: MyString
+  no_items: 1
+  socio: MyString
+  fecha_orden: 2020-06-28
+  ubicacion: one
+  tipo_entrega: one
+  responsable: one
+  club: one
+
+two:
+  orden: 1
+  OMS: MyString
+  no_items: 1
+  socio: MyString
+  fecha_orden: 2020-06-28
+  ubicacion: two
+  tipo_entrega: two
+  responsable: two
+  club: two

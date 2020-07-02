@@ -1,0 +1,17 @@
+%p#notice= notice
+
+= image_tag @entrega.image.url(:medium)
+
+%p
+  %b Entregado:
+  = @entrega.entregado
+%p
+  %b Fecha entrega:
+  = @entrega.fecha_entrega
+%p
+  %b Pedido:
+  = @entrega.pedido
+
+-# = link_to 'Edit', edit_entrega_path(@entrega)
+-# \|
+-# = link_to 'Back', entregas_path

@@ -1,0 +1,55 @@
+%h1 Listing pedidos
+
+.custom-file
+  %input#customFile.custom-file-input{:type => "file"}/
+  %label.custom-file-label{:for => "customFile"} Choose file
+
+
+%h3 Importar pedidos
+= form_tag import_pedidos_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Subir pedidos"
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Orden
+      %th Oms
+      %th Actual
+      %th Asignar
+      %th No items
+      %th Socio
+      %th Fecha orden
+      /%th Tipo entrega
+      /%th Responsable
+      /%th Club
+      /%th
+      /%th
+      /%th
+
+  %tbody
+    - @pedidos.each do |pedido|
+      %tr
+        %td= pedido.orden
+        %td= pedido.OMS
+        %td= pedido.ubicacion.ubicacion
+        /%td= collection_select :ubicacion, :ubicacion_id, Ubicacion.all, :id, :ubicacion
+        %td= link_to 'Asignar ubicación', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
+        /%td= select("pedido", "ubicacion_id", Ubicacion.all.collect { |p| [ p.ubicacion, p.id ] }, {include_blank: 'None' })
+        %td= pedido.no_items
+        %td= pedido.socio
+        %td= pedido.fecha_orden
+        %td= link_to 'Entregar', pedido_entregas_path(pedido), class: 'btn btn-info btn-sm'
+                
+        /%td= collection_select :tipo_entrega, :tipo_entrega_id, TipoEntrega.all, :id, :entregado_por
+        /%td= pedido.tipo_entrega.entregado_por
+        /%td= pedido.responsable.responsable
+        /%td= pedido.club.no_club
+        /%td= link_to 'Show', pedido
+        /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
+        /%td= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Pedido', new_pedido_path

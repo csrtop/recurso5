@@ -1,0 +1,31 @@
+%h2 Pedido: = #{@pedido.orden}
+%h2 OMS: = #{@pedido.OMS}
+%h2 Socio: = #{@pedido.socio}
+
+.page-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Entregado
+      %th Membresia
+      %th Fecha entrega
+      %th Pedido
+      -# %th
+      -# %th
+      -# %th
+
+  %tbody
+    - @entregas.each do |entrega|
+      %tr
+        %td= entrega.entregado
+        %td= image_tag entrega.image.url(:medium)
+        %td= entrega.fecha_entrega
+        %td= entrega.pedido.orden
+        /%td= link_to 'Show', pedido_entrega_path(@entrega)
+        -# %td= link_to 'Edit', edit_entrega_path(entrega)
+        -# %td= link_to 'Destroy', entrega, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Entrega', new_pedido_entrega_path(@pedido),class: 'btn btn-info btn-sm'
+= link_to 'Cancelar', pedidos_path, class: 'btn btn-warning btn-sm'

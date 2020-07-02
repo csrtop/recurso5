@@ -1,0 +1,22 @@
+= form_for [@pedido, @entrega], html: { multipart: true } do |f|
+
+  - if @entrega.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@entrega.errors.count, "error")} prohibited this entrega from being saved:"
+      %ul
+        - @entrega.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :image
+    = f.file_field :image
+  .field
+    = f.label :entregado
+    = f.check_box :entregado
+  .field
+    = f.label :fecha_entrega
+    = f.date_select :fecha_entrega
+  .field
+    = f.label :pedido
+    = f.text_field :pedido_id
+  .actions
+    = f.submit 'Save'

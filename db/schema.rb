@@ -10,13 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_193241) do
+ActiveRecord::Schema.define(version: 2020_07_01_181327) do
 
   create_table "clubes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "no_club"
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "entregas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.boolean "entregado"
+    t.date "fecha_entrega"
+    t.bigint "pedido_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["pedido_id"], name: "index_entregas_on_pedido_id"
+  end
+
+  create_table "pedidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "orden"
+    t.string "OMS"
+    t.integer "no_items"
+    t.string "socio"
+    t.date "fecha_orden"
+    t.bigint "ubicacion_id", null: false
+    t.bigint "tipo_entrega_id", null: false
+    t.bigint "responsable_id", null: false
+    t.bigint "club_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_pedidos_on_club_id"
+    t.index ["responsable_id"], name: "index_pedidos_on_responsable_id"
+    t.index ["tipo_entrega_id"], name: "index_pedidos_on_tipo_entrega_id"
+    t.index ["ubicacion_id"], name: "index_pedidos_on_ubicacion_id"
   end
 
   create_table "productos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -55,6 +86,11 @@ ActiveRecord::Schema.define(version: 2020_06_25_193241) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "entregas", "pedidos"
+  add_foreign_key "pedidos", "clubes"
+  add_foreign_key "pedidos", "responsables"
+  add_foreign_key "pedidos", "tipo_entregas"
+  add_foreign_key "pedidos", "ubicaciones"
   add_foreign_key "productos", "clubes"
   add_foreign_key "responsables", "clubes"
 end
