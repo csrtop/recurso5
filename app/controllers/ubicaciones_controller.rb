@@ -1,6 +1,6 @@
 class UbicacionesController < ApplicationController
   before_action :set_ubicacion, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /ubicaciones
   # GET /ubicaciones.json
   def index

@@ -1,6 +1,6 @@
 class TipoEntregasController < ApplicationController
   before_action :set_tipo_entrega, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /tipo_entregas
   # GET /tipo_entregas.json
   def index

@@ -9,6 +9,11 @@
   .field
     = f.label :image
     = f.file_field :image
+
+  .field
+    = f.label :files
+    = f.file_field :files, multiple: true
+
   .field
     = f.label :entregado
     = f.check_box :entregado

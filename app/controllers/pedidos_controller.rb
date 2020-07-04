@@ -1,11 +1,14 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /pedidos
   # GET /pedidos.json
   def index
     #@pedidos = Pedido.all
-    @pedidos = Pedido.where("ubicacion_id !=8").order('updated_at ASC')
+    @pedidos = Pedido.where("club_id=#{current_user.club_id} and ubicacion_id !=8").order('updated_at ASC')
+    
   end
 
   # GET /pedidos/1

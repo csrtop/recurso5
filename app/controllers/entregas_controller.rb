@@ -1,6 +1,6 @@
 class EntregasController < ApplicationController
   before_action :set_entrega, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /entregas
   # GET /entregas.json
   def index
@@ -12,7 +12,7 @@ class EntregasController < ApplicationController
   # GET /entregas/1.json
   def show
 #    @pedido = Pedido.find(params[:pedido_id])
-    @entrega = Entrega.find(params[:entrega_id])
+    #@entrega = Entrega.find(params[:id])
   end
 
   # GET /entregas/new
@@ -30,6 +30,8 @@ class EntregasController < ApplicationController
   def create
     @pedido = Pedido.find(params[:pedido_id])
     @entrega = @pedido.entregas.new(entrega_params)
+
+    
 
     respond_to do |format|
       if @entrega.save
@@ -74,6 +76,6 @@ class EntregasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entrega_params
-      params.require(:entrega).permit(:entregado, :fecha_entrega, :pedido_id, :image)
+      params.require(:entrega).permit(:entregado, :fecha_entrega, :pedido_id, :image, files:[])
     end
 end

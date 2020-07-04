@@ -1,6 +1,6 @@
 class ClubesController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /clubes
   # GET /clubes.json
   def index
@@ -28,7 +28,7 @@ class ClubesController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to @club, notice: 'Club was successfully created.' }
+        format.html { redirect_to clubes_path, notice: 'Club was successfully created.' }
         format.json { render :show, status: :created, location: @club }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ClubesController < ApplicationController
   def update
     respond_to do |format|
       if @club.update(club_params)
-        format.html { redirect_to @club, notice: 'Club was successfully updated.' }
+        format.html { redirect_to clubes_path, notice: 'Club was successfully updated.' }
         format.json { render :show, status: :ok, location: @club }
       else
         format.html { render :edit }

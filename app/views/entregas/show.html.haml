@@ -1,6 +1,12 @@
 %p#notice= notice
 
-= image_tag @entrega.image.url(:medium)
+/= image_tag @entrega.image.url(:medium)
+
+- (0...@entrega.files.count).each do |files|
+  %div{:style => "width:300px; height:300px;"}
+    = image_tag(@entrega.files[files], style:'with:75%; height: 70%')
+/= image_tag url_for(@entrega.files)
+/= link_to @entrega.files.filename, rails_blob_path(@entrega.files, disposition: "attachment")
 
 %p
   %b Entregado:
@@ -10,7 +16,9 @@
   = @entrega.fecha_entrega
 %p
   %b Pedido:
-  = @entrega.pedido
+  = @entrega.pedido.orden
+
+
 
 -# = link_to 'Edit', edit_entrega_path(@entrega)
 -# \|
