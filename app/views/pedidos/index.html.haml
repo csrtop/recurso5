@@ -35,7 +35,7 @@
         %td= pedido.OMS
         %td= pedido.ubicacion.ubicacion
         /%td= collection_select :ubicacion, :ubicacion_id, Ubicacion.all, :id, :ubicacion
-        %td= link_to 'Asignar ubicación', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
+        %td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
         /%td= select("pedido", "ubicacion_id", Ubicacion.all.collect { |p| [ p.ubicacion, p.id ] }, {include_blank: 'None' })
         %td= pedido.no_items
         %td= pedido.socio
@@ -46,7 +46,7 @@
         /%td= pedido.tipo_entrega.entregado_por
         /%td= pedido.responsable.responsable
         /%td= pedido.club.no_club
-        /%td= link_to 'Show', pedido
+        %td= link_to 'Show', pedido
         /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
         /%td= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 

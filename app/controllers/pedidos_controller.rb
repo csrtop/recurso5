@@ -2,12 +2,11 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-
   # GET /pedidos
   # GET /pedidos.json
   def index
     #@pedidos = Pedido.all
-    @pedidos = Pedido.where("club_id=#{current_user.club_id} and ubicacion_id !=8").order('updated_at ASC')
+    @pedidos = Pedido.where("club_id=#{current_user.club_id} and ubicacion_id !=8").order('orden')
     
   end
 
@@ -66,12 +65,17 @@ class PedidosController < ApplicationController
   end
 
   #para subir csv
+  #def import
+    #Pedido.import(params[:file])
+    #redirect_to pedidos_path, notice: "Pedidos Agregados Correctamente"
+  #end
+  #fin pedidos
+  
   def import
     Pedido.import(params[:file])
     redirect_to pedidos_path, notice: "Pedidos Agregados Correctamente"
   end
-  #fin pedidos
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pedido
@@ -80,6 +84,7 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id)
+      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, pictures: [])
+      #params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, pictures: [])
     end
 end

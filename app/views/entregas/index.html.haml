@@ -6,23 +6,28 @@
 %table.table.table-striped
   %thead
     %tr
-      %th Entregado
+      -#%th Entregado
       %th Membresia
-      %th pedido pdf
-      %th Fecha entrega
-      %th Pedido
-      %th
+      -#%th pedido_pdf
+      -#%th Fecha entrega
+      -#%th Pedido
+      -#%th
       -# %th
       -# %th
 
   %tbody
     - @entregas.each do |entrega|
       %tr
-        %td= entrega.entregado
-        %td= image_tag entrega.image.url(:medium)
-        %td= entrega.fecha_entrega
-        %td= entrega.pedido.orden
-        %td= link_to 'Show', [@pedido, @active_storage_attachments] 
+        -#%td= entrega.entregado
+        - if entrega.picture.attached?
+          %td= image_tag (url_for(entrega.thumbnail))#thumbnail  
+        - else
+        - if entrega.doc.attached?
+          = link_to 'Descargar Pedido PDF', rails_blob_path(entrega.doc, disposition: 'attachment'), class: 'btn btn-primary btn-lg'
+          
+          -#%td= entrega.fecha_entrega
+          -#%td= entrega.pedido.orden
+        -#%td= link_to 'Show', [@pedido, @active_storage] 
         -# %td= link_to 'Edit', edit_entrega_path(entrega)
         -# %td= link_to 'Destroy', entrega, method: :delete, data: { confirm: 'Are you sure?' }
 

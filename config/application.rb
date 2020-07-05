@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+
 require 'rails/all'
 require 'csv'
 
@@ -10,12 +11,13 @@ Bundler.require(*Rails.groups)
 module Recurso5
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.active_storage.replace_on_assign_to_many = false
     config.load_defaults 6.0
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-         origins '*'
-         resource '*', headers: :any, methods: [:get, :post, :patch, :delete, :options]
-       end
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :patch, :delete, :options]
+      end
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

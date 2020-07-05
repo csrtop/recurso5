@@ -7,13 +7,8 @@
         - @entrega.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :image
-    = f.file_field :image
-
-  .field
-    = f.label :files
-    = f.file_field :files, multiple: true
-
+    = f.label :picture
+    = f.file_field :picture
   .field
     = f.label :entregado
     = f.check_box :entregado
@@ -23,5 +18,9 @@
   .field
     = f.label :pedido
     = f.text_field :pedido_id
+  .field
+    = f.label :doc
+    = f.file_field :doc
+    
   .actions
     = f.submit 'Save'
