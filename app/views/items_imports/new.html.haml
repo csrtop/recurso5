@@ -1,0 +1,16 @@
+%h1 Importar pedidos de Excel
+%p
+    Notas: Utilizar el formato valido para subir archivos
+%ul
+    %li Por favor no elimine los titulos de cada celda.
+    %li Importar solo archivos xls o xlsx.
+%h5 Seleccione archivo
+= form_for @items_import do |f|
+    - if @items_import.errors.any?
+        = pluralize(@items_import.errors.count, "error")
+        Error duratente la importacion, por favor revise su archivo e intente nuevamente.
+        %ul
+        - @items_import.errors.full_messages.each do |msg|
+            %li= msg
+    = f.file_field :file    
+    = f.submit "Importar Archivo"

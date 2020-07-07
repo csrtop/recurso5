@@ -4,6 +4,12 @@ require_relative 'boot'
 require 'rails/all'
 require 'csv'
 
+#begin roo
+require 'roo'
+
+
+#end roo
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

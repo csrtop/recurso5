@@ -6,34 +6,35 @@
         - @pedido.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :pictures
-    = f.file_field :pictures, multiple: true
-  .field
-    = f.label :orden
-    = f.number_field :orden
-  .field
-    = f.label :OMS
-    = f.text_field :OMS
-  .field
-    = f.label :no_items
-    = f.number_field :no_items
-  .field
-    = f.label :socio
-    = f.text_field :socio
-  .field
-    = f.label :fecha_orden
-    = f.date_select :fecha_orden
-  .field
     = f.label :ubicacion
     = f.collection_select :ubicacion_id, Ubicacion.all, :id, :ubicacion, {prompt: "seleccione ubicacion"}
-  .field
-    = f.label :tipo_entrega
-    = f.text_field :tipo_entrega
-  .field
-    = f.label :responsable
-    = f.text_field :responsable
-  .field
-    = f.label :club
-    = f.text_field :club
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save'   
+-  # .field
+-  #   = f.label :pictures
+-  #   = f.file_field :pictures, multiple: true
+-  # .field
+-  #   = f.label :orden
+-  #   = f.number_field :orden
+-  # .field
+-  #   = f.label :OMS
+-  #   = f.text_field :OMS
+-  # .field
+-  #   = f.label :no_items
+-  #   = f.number_field :no_items
+-  # .field
+-  #   = f.label :socio
+-  #   = f.text_field :socio
+-  # .field
+-  #   = f.label :fecha_orden
+-  #   = f.date_select :fecha_orden 
+-  # .field
+-  #   = f.label :tipo_entrega
+-  #   = f.text_field :tipo_entrega
+-  # .field
+-  #   = f.label :responsable
+-  #   = f.text_field :responsable
+-  # .field
+-  #   = f.label :club
+-  #   = f.text_field :club
+

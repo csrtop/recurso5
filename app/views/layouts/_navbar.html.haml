@@ -15,7 +15,7 @@
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           Mas Opciones
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "/pedidos"} Subir pedidos diarios
+          %a.dropdown-item{:href => "/items_imports/new"} Subir pedidos diarios
           %a.dropdown-item{:href => "/responsables"} Responsables
           %a.dropdown-item{:href => "/ubicaciones"} Ubicaciones
           .dropdown-divider
@@ -24,7 +24,7 @@
       %li.nav-item
         %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
     %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}
       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
 - if current_user
   = link_to 'Logout', destroy_user_session_path, method: :delete
