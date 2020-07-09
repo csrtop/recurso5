@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Fase:
+  = @fase.fase
+
+= link_to 'Edit', edit_fase_path(@fase)
+\|
+= link_to 'Back', fases_path

@@ -16,7 +16,8 @@ inflect.irregular 'orden', 'ordenes'
 inflect.irregular 'producto', 'productos'
 inflect.irregular 'usuario', 'usuarios'
 inflect.irregular 'ubicacion', 'ubicaciones'
-
+inflect.irregular 'estado', 'estados'
+inflect.irregular 'fase', 'fases'
 #   inflect.uncountable %w( fish sheep )
  end
 

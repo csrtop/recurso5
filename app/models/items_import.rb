@@ -2,12 +2,12 @@ class ItemsImport
     include ActiveModel::Model
     require 'roo'
 
-    attr_accessor :file
+    attr_accessor :file, :pedido, :club_id
 
     def initialize(attributes={})
         attributes.each { |orden, value| send("#{orden}=", value) }
     end
-
+    
     def persisted?
         false
     end

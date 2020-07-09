@@ -27,8 +27,9 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    @pedido.club_id = current_user.club_id
     @pedido = Pedido.new(pedido_params)
-
+    
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
@@ -71,12 +72,6 @@ class PedidosController < ApplicationController
   #end
   #fin pedidos
   
-  
-  def import
-    Pedido.import(params[:file])
-    redirect_to pedidos_path, notice: "Pedidos Agregados Correctamente"
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pedido
@@ -85,7 +80,7 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, pictures: [])
+      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, fase_id, pictures: [])
       #params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, pictures: [])
     end
 end
