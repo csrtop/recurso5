@@ -12,7 +12,6 @@ class Pedido < ApplicationRecord
   belongs_to :tipo_entrega
   belongs_to :responsable
   belongs_to :club
-  belongs_to :fase
   has_many :entregas, :dependent => :destroy
   accepts_nested_attributes_for :entregas
   
