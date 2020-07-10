@@ -7,6 +7,7 @@ class Pedido < ApplicationRecord
   #     Pedido.create! row.to_hash
   #     end
   #   end
+  belongs_to :estado
   has_many_attached :pictures
   belongs_to :ubicacion
   belongs_to :tipo_entrega
