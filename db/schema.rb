@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_120210) do
+ActiveRecord::Schema.define(version: 2020_07_10_183903) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 2020_07_10_120210) do
     t.index ["pedido_id"], name: "index_entregas_on_pedido_id"
   end
 
+  create_table "estados", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "estado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pedidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "orden"
     t.string "OMS"
@@ -65,7 +71,9 @@ ActiveRecord::Schema.define(version: 2020_07_10_120210) do
     t.bigint "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "estado_id", null: false
     t.index ["club_id"], name: "index_pedidos_on_club_id"
+    t.index ["estado_id"], name: "index_pedidos_on_estado_id"
     t.index ["responsable_id"], name: "index_pedidos_on_responsable_id"
     t.index ["tipo_entrega_id"], name: "index_pedidos_on_tipo_entrega_id"
     t.index ["ubicacion_id"], name: "index_pedidos_on_ubicacion_id"
@@ -127,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_120210) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entregas", "pedidos"
   add_foreign_key "pedidos", "clubes"
+  add_foreign_key "pedidos", "estados"
   add_foreign_key "pedidos", "responsables"
   add_foreign_key "pedidos", "tipo_entregas"
   add_foreign_key "pedidos", "ubicaciones"
