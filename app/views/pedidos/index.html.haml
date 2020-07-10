@@ -16,7 +16,7 @@
       %th Oms
       %th Actual
       %th Asignar
-      %th Estado actual
+      /%th Estado actual
       %th No items
       %th Socio
       %th Fecha orden
@@ -36,7 +36,7 @@
         /%td= collection_select :ubicacion, :ubicacion_id, Ubicacion.all, :id, :ubicacion
         %td= link_to 'Asignar ubicacion', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
         /%td= select("pedido", "ubicacion_id", Ubicacion.all.collect { |p| [ p.ubicacion, p.id ] }, {include_blank: 'None' })
-        %td= pedido.fase.fase
+        /%td= pedido.fase.fase
         %td= pedido.no_items
         %td= pedido.socio
         %td= pedido.fecha_orden

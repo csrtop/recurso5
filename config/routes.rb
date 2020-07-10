@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :fases
   devise_for :users
   resources :pedidos do
       collection { post :import }
