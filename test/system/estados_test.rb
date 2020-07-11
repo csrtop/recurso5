@@ -14,7 +14,8 @@ class EstadosTest < ApplicationSystemTestCase
     visit estados_url
     click_on "New Estado"
 
-    fill_in "Estado", with: @estado.estado
+    fill_in "Descripcion", with: @estado.descripcion
+    fill_in "No estado", with: @estado.no_estado
     click_on "Create Estado"
 
     assert_text "Estado was successfully created"
@@ -25,7 +26,8 @@ class EstadosTest < ApplicationSystemTestCase
     visit estados_url
     click_on "Edit", match: :first
 
-    fill_in "Estado", with: @estado.estado
+    fill_in "Descripcion", with: @estado.descripcion
+    fill_in "No estado", with: @estado.no_estado
     click_on "Update Estado"
 
     assert_text "Estado was successfully updated"

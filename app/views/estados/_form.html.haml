@@ -7,7 +7,10 @@
           %li= message
 
   .field
-    = f.label :estado
-    = f.text_field :estado
+    = f.label :no_estado
+    = f.number_field :no_estado
+  .field
+    = f.label :descripcion
+    = f.text_field :descripcion
   .actions
     = f.submit 'Save'

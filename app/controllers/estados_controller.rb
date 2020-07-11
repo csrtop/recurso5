@@ -69,6 +69,6 @@ class EstadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estado_params
-      params.require(:estado).permit(:estado)
+      params.require(:estado).permit(:no_estado, :descripcion)
     end
 end

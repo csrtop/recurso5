@@ -17,7 +17,7 @@ class EstadosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create estado" do
     assert_difference('Estado.count') do
-      post estados_url, params: { estado: { estado: @estado.estado } }
+      post estados_url, params: { estado: { descripcion: @estado.descripcion, no_estado: @estado.no_estado } }
     end
 
     assert_redirected_to estado_url(Estado.last)
@@ -34,7 +34,7 @@ class EstadosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update estado" do
-    patch estado_url(@estado), params: { estado: { estado: @estado.estado } }
+    patch estado_url(@estado), params: { estado: { descripcion: @estado.descripcion, no_estado: @estado.no_estado } }
     assert_redirected_to estado_url(@estado)
   end
 

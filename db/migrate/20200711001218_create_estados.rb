@@ -1,7 +1,8 @@
 class CreateEstados < ActiveRecord::Migration[6.0]
   def change
     create_table :estados do |t|
-      t.string :estado
+      t.integer :no_estado
+      t.string :descripcion
 
       t.timestamps
     end

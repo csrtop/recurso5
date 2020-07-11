@@ -1,8 +1,11 @@
 %p#notice= notice
 
 %p
-  %b Estado:
-  = @estado.estado
+  %b No estado:
+  = @estado.no_estado
+%p
+  %b Descripcion:
+  = @estado.descripcion
 
 = link_to 'Edit', edit_estado_path(@estado)
 \|
