@@ -1,4 +1,4 @@
-= form_for @ubicacion do |f|
+= form_for [@club, @ubicacion], html: { multipart: true } do |f|
   - if @ubicacion.errors.any?
     #error_explanation
       %h2= "#{pluralize(@ubicacion.errors.count, "error")} prohibited this ubicacion from being saved:"
@@ -7,7 +7,10 @@
           %li= message
 
   .field
-    = f.label :ubicacion
-    = f.text_field :ubicacion
+    = f.label :club
+    = f.text_field :club
+  .field
+    = f.label :pedido
+    = f.text_field :pedido
   .actions
     = f.submit 'Save'

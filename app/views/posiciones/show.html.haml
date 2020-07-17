@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Pedido:
+  = @posicion.pedido
+%p
+  %b Pasillo:
+  = @posicion.pasillo
+%p
+  %b Bahia:
+  = @posicion.bahia
+
+= link_to 'Edit', edit_posicion_path(@posicion)
+\|
+= link_to 'Back', posiciones_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_001946) do
+ActiveRecord::Schema.define(version: 2020_07_17_031929) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_07_11_001946) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bahias", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "bahia"
+    t.bigint "club_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_bahias_on_club_id"
   end
 
   create_table "clubes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -60,13 +68,20 @@ ActiveRecord::Schema.define(version: 2020_07_11_001946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pasillos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "pasillo"
+    t.bigint "club_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_pasillos_on_club_id"
+  end
+
   create_table "pedidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "orden"
     t.string "OMS"
     t.integer "no_items"
     t.string "socio"
     t.date "fecha_orden"
-    t.bigint "ubicacion_id"
     t.bigint "tipo_entrega_id"
     t.bigint "responsable_id"
     t.bigint "club_id"
@@ -77,7 +92,17 @@ ActiveRecord::Schema.define(version: 2020_07_11_001946) do
     t.index ["estado_id"], name: "index_pedidos_on_estado_id"
     t.index ["responsable_id"], name: "index_pedidos_on_responsable_id"
     t.index ["tipo_entrega_id"], name: "index_pedidos_on_tipo_entrega_id"
-    t.index ["ubicacion_id"], name: "index_pedidos_on_ubicacion_id"
+  end
+
+  create_table "posiciones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "pedido_id", null: false
+    t.bigint "pasillo_id", null: false
+    t.bigint "bahia_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bahia_id"], name: "index_posiciones_on_bahia_id"
+    t.index ["pasillo_id"], name: "index_posiciones_on_pasillo_id"
+    t.index ["pedido_id"], name: "index_posiciones_on_pedido_id"
   end
 
   create_table "productos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -111,9 +136,12 @@ ActiveRecord::Schema.define(version: 2020_07_11_001946) do
   end
 
   create_table "ubicaciones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "ubicacion"
+    t.bigint "club_id", null: false
+    t.bigint "pedido_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_ubicaciones_on_club_id"
+    t.index ["pedido_id"], name: "index_ubicaciones_on_pedido_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -134,12 +162,18 @@ ActiveRecord::Schema.define(version: 2020_07_11_001946) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bahias", "clubes"
   add_foreign_key "entregas", "pedidos"
+  add_foreign_key "pasillos", "clubes"
   add_foreign_key "pedidos", "clubes"
   add_foreign_key "pedidos", "estados"
   add_foreign_key "pedidos", "responsables"
   add_foreign_key "pedidos", "tipo_entregas"
-  add_foreign_key "pedidos", "ubicaciones"
+  add_foreign_key "posiciones", "bahias"
+  add_foreign_key "posiciones", "pasillos"
+  add_foreign_key "posiciones", "pedidos"
   add_foreign_key "productos", "clubes"
   add_foreign_key "responsables", "clubes"
+  add_foreign_key "ubicaciones", "clubes"
+  add_foreign_key "ubicaciones", "pedidos"
 end

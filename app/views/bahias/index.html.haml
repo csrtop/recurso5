@@ -1,0 +1,25 @@
+%h1 Listado Bahias
+
+.page-header
+%table.table.table-striped.table-bordered.table-responsive
+  %thead
+    %tr
+      %th Bahia
+      -#%th Club
+      %th
+      %th
+
+  %tbody
+    - @bahias.each do |bahia|
+      %tr
+        %td= bahia.bahia
+        -#%td= bahia.club.no_club
+        -#%td= link_to 'Show', bahia
+        %td= link_to 'Edit', edit_bahia_path(bahia), class: 'btn btn-warning'
+        %td= link_to 'Destroy', bahia, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Bahia', new_bahia_path, class: 'btn btn-primary'
+%h2
+= link_to 'Regresar A Pedidos', pedidos_path, class: 'btn btn-success'

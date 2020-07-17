@@ -1,0 +1,24 @@
+
+= form_for [@pedido, @posicion], html: { multipart: true } do |f|
+  - if @posicion.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@posicion.errors.count, "error")} prohibited this posicion from being saved:"
+      %ul
+        - @posicion.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.hidden_field :pedido
+    = f.hidden_field :pedido_id
+  -#.field
+    -#= f.label :pedido
+    -#= f.text_field :pedido
+  .field
+    = f.label :pasillo
+    = f.collection_select :pasillo_id, Pasillo.where("club_id=#{current_user.club_id}"), :id, :pasillo, {prompt: "seleccione pasillo"}
+    -#= f.collection_select :pasillo_id, Pasillo.all, :id, :pasillo, {prompt: "seleccione pasillo"}
+
+  .field
+    = f.label :bahia
+    = f.collection_select :bahia_id, Bahia.where("club_id=#{current_user.club_id}"), :id, :bahia, {prompt: "seleccione bahia"}
+  .actions
+    = f.submit 'Save'

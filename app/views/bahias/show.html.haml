@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Bahia:
+  = @bahia.bahia
+%p
+  %b Club:
+  = @bahia.club
+
+= link_to 'Edit', edit_bahia_path(@bahia)
+\|
+= link_to 'Back', bahias_path

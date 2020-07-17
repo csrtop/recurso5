@@ -7,14 +7,16 @@ class Pedido < ApplicationRecord
   #     Pedido.create! row.to_hash
   #     end
   #   end
+  
   belongs_to :estado
   has_many_attached :pictures
-  belongs_to :ubicacion
   belongs_to :tipo_entrega
   belongs_to :responsable
   belongs_to :club
   has_many :entregas, :dependent => :destroy
+  has_many :posiciones, :dependent => :destroy
   accepts_nested_attributes_for :entregas
+  has_many :ubicaciones, :dependent => :destroy
   
   def thumbnail input
     return self.pictures[input].variant(resize: '300x300!').processed

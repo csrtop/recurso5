@@ -17,7 +17,7 @@ class UbicacionesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ubicacion" do
     assert_difference('Ubicacion.count') do
-      post ubicaciones_url, params: { ubicacion: { ubicacion: @ubicacion.ubicacion } }
+      post ubicaciones_url, params: { ubicacion: { club_id: @ubicacion.club_id, pedido_id: @ubicacion.pedido_id } }
     end
 
     assert_redirected_to ubicacion_url(Ubicacion.last)
@@ -34,7 +34,7 @@ class UbicacionesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update ubicacion" do
-    patch ubicacion_url(@ubicacion), params: { ubicacion: { ubicacion: @ubicacion.ubicacion } }
+    patch ubicacion_url(@ubicacion), params: { ubicacion: { club_id: @ubicacion.club_id, pedido_id: @ubicacion.pedido_id } }
     assert_redirected_to ubicacion_url(@ubicacion)
   end
 

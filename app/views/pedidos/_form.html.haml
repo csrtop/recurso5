@@ -7,7 +7,10 @@
           %li= message
   .field
     = f.label :ubicacion
-    = f.collection_select :ubicacion_id, Ubicacion.all, :id, :ubicacion, {prompt: "seleccione ubicacion"}
+    # = f.collection_select :ubicacion_id, Ubicacion.all, :id, :ubicacion, {prompt: "seleccione ubicacion"}
+  .field
+    = f.label :Estado
+    = f.collection_select :estado_id, Estado.all, :id, :descripcion, {prompt: "seleccione estado"}
   .actions
     = f.submit 'Save'   
 -  # .field

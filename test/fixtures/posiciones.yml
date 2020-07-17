@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pedido: one
+  pasillo: one
+  bahia: one
+
+two:
+  pedido: two
+  pasillo: two
+  bahia: two

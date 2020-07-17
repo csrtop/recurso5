@@ -6,8 +6,8 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     #@pedidos = Pedido.all
-    @pedidos = Pedido.where("club_id=#{current_user.club_id} and ubicacion_id !=8").order('orden')
-    
+    @pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").order('orden')
+    #@pedidos = Pedido.where("club_id=#{current_user.club_id} and ubicacion_id !=8").order('orden')
   end
 
   # GET /pedidos/1
@@ -80,7 +80,7 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, :estado_id, pictures: [])
+      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :tipo_entrega_id, :responsable_id, :club_id, :estado_id, pictures: [])
       #params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, pictures: [])
     end
 end

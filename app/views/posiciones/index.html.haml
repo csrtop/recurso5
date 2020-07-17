@@ -1,0 +1,27 @@
+%h1 Ubicacion Pedido: #{@pedido.orden}
+
+%h2 OMS: #{@pedido.OMS}
+%h2 Socio: #{@pedido.socio}
+
+.page-header
+%table.table.table-responsive.table-bordered
+  %thead
+    %tr 
+      -#%th Pedido
+      %th Pasillo
+      %th Bahia
+
+  %tbody
+    - @posiciones.each do |posicion|
+      %tr
+        -#%td= posicion.pedido.orden
+        %td= posicion.pasillo.pasillo
+        %td= posicion.bahia.bahia
+        -#%td= link_to 'Show', posicion
+        -#%td= link_to 'Edit', edit_posicion_path(posicion)
+        -#%td= link_to 'Destroy', posicion, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+= link_to 'Nueva Ubicación', new_pedido_posicion_path(@pedido),class: 'btn btn-secondary btn-xl'
+%h2
+= link_to 'Regresar', pedidos_path,class: 'btn btn-primary btn-xl'

@@ -4,27 +4,20 @@
 -#  %input#customFile.custom-file-input{:type => "file"}/
 -#  %label.custom-file-label{:for => "customFile"} Choose file
 
-
 %h3 Importar pedidos
 = form_tag import_pedidos_path, multipart: true do
   = link_to 'Subir pedidos', new_items_import_path, class: 'btn btn-primary btn-lg active'
 .page-header
-%table.table.table-striped
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th Orden
       %th Oms
-      %th Actual
-      %th Asignar
-      /%th Estado actual
+      %th Estado
+      %th Ubicacion 
       %th No items
       %th Socio
       %th Fecha orden
-      /%th Tipo entrega
-      /%th Responsable
-      /%th Club
-      /%th
-      /%th
       %th Acciones
 
   %tbody
@@ -32,20 +25,23 @@
       %tr
         %td= pedido.orden
         %td= pedido.OMS
-        %td= pedido.ubicacion.ubicacion
-        /%td= collection_select :ubicacion, :ubicacion_id, Ubicacion.all, :id, :ubicacion
-        %td= link_to 'Asignar ubicacion', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
-        /%td= select("pedido", "ubicacion_id", Ubicacion.all.collect { |p| [ p.ubicacion, p.id ] }, {include_blank: 'None' })
+        -# %td= collection_select :ubicacion, :ubicacion_id, Ubicacion.all, :id, :ubicacion
+        -#%td= link_to 'Asignar ubicacion', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
+        -#%td= link_to 'Asignar ubicacion', new_pedido_ubicacion_path(pedido), class: 'btn btn-success btn-sm'
+        %td= pedido.estado.descripcion
+        %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
+        -#%td= link_to 'Ubicar', club_ubicaciones_path(club), class: 'btn btn-secondary btn-sm'
+        -#%td= link_to 'Asignar ubicacion', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
         %td= pedido.no_items
         %td= pedido.socio
         %td= pedido.fecha_orden
-        %td= link_to 'Entregar', pedido_entregas_path(pedido), class: 'btn btn-primary btn-sm'
+        %td= link_to 'Entregar', pedido_entregas_path(pedido), class: 'btn btn-primary'
         /%td= collection_select :tipo_entrega, :tipo_entrega_id, TipoEntrega.all, :id, :entregado_por
         /%td= pedido.tipo_entrega.entregado_por
         /%td= pedido.responsable.responsable
         /%td= pedido.club.no_club
-        %td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning btn-sm'
-        /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning btn-sm'
+        %td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning'
+        /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
         /%td= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br

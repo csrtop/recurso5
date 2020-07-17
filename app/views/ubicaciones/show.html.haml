@@ -1,9 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Ubicacion:
-  = @ubicacion.ubicacion
+  %b Club:
+  = @ubicacion.club
+%p
+  %b Pedido:
+  = @ubicacion.pedido
 
-= link_to 'Edit', edit_ubicacion_path(@ubicacion)
+-#= link_to 'Edit', edit_ubicacion_path(@ubicacion)
 \|
-= link_to 'Back', ubicaciones_path
+-#= link_to 'Back', ubicaciones_path

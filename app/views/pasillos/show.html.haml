@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Pasillo:
+  = @pasillo.pasillo
+%p
+  %b Club:
+  = @pasillo.club
+
+= link_to 'Edit', edit_pasillo_path(@pasillo)
+\|
+= link_to 'Back', pasillos_path

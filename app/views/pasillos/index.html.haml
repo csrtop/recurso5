@@ -1,0 +1,25 @@
+%h1 Listing pasillos
+
+.page-header
+%table.table.table-striped.table-bordered.table-responsive
+  %thead
+    %tr
+      %th Pasillo
+      -#%th Club
+      %th
+      %th
+
+  %tbody
+    - @pasillos.each do |pasillo|
+      %tr
+        %td= pasillo.pasillo
+        -#%td= pasillo.club.no_club
+        -#%td= link_to 'Show', pasillo
+        %td= link_to 'Edit', edit_pasillo_path(pasillo), class: 'btn btn-warning'
+        %td= link_to 'Destroy', pasillo, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'Agregar Pasillo', new_pasillo_path, class: 'btn btn-primary'
+%h2
+= link_to 'Regresar A Pedidos', pedidos_path, class: 'btn btn-success'

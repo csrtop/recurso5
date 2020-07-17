@@ -3,7 +3,7 @@
 %h2 Socio: #{@pedido.socio}
 
 .page-header
-%table.table.table-striped
+%table.table.table-striped.table-bordered
   %thead
     %tr
       -#%th Entregado
@@ -34,5 +34,5 @@
 %br
 
 
-= link_to 'Subir foto / pdf ', new_pedido_entrega_path(@pedido),class: 'btn btn-primary btn-sm'
-= link_to 'Regresar', pedidos_path, class: 'btn btn-warning btn-sm'
+= link_to 'Subir foto / pdf ', new_pedido_entrega_path(@pedido),class: 'btn btn-primary'
+= link_to 'Regresar', pedidos_path, class: 'btn btn-warning'

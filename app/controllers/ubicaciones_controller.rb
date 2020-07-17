@@ -1,10 +1,12 @@
 class UbicacionesController < ApplicationController
   before_action :set_ubicacion, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+
   # GET /ubicaciones
   # GET /ubicaciones.json
   def index
-    @ubicaciones = Ubicacion.all
+    @club = Club.find(params[:club_id])
+    @ubicaciones = @club.ubicaciones
+
   end
 
   # GET /ubicaciones/1
@@ -14,7 +16,8 @@ class UbicacionesController < ApplicationController
 
   # GET /ubicaciones/new
   def new
-    @ubicacion = Ubicacion.new
+    @club = Club.find(params[:club_id])
+    @ubicacion = @club.ubicaciones.new
   end
 
   # GET /ubicaciones/1/edit
@@ -24,11 +27,12 @@ class UbicacionesController < ApplicationController
   # POST /ubicaciones
   # POST /ubicaciones.json
   def create
-    @ubicacion = Ubicacion.new(ubicacion_params)
+    @club = Club.find(params[:club_id])
+    @ubicacion = @club.ubicaciones.new(ubicacion_params)
 
     respond_to do |format|
       if @ubicacion.save
-        format.html { redirect_to @ubicacion, notice: 'Ubicacion was successfully created.' }
+        format.html { redirect_to club_ubicaciones_path(@club), notice: 'Ubicacion was successfully created.' }
         format.json { render :show, status: :created, location: @ubicacion }
       else
         format.html { render :new }
@@ -69,6 +73,6 @@ class UbicacionesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ubicacion_params
-      params.require(:ubicacion).permit(:ubicacion)
+      params.require(:ubicacion).permit(:club_id, :pedido_id)
     end
 end

@@ -4,6 +4,8 @@ class EstadosController < ApplicationController
   # GET /estados
   # GET /estados.json
   def index
+    # @pedido = Pedido.find(params[:pedido_id])
+    # @estados = @pedido.estados.order("id")
     @estados = Estado.all
   end
 
@@ -14,6 +16,8 @@ class EstadosController < ApplicationController
 
   # GET /estados/new
   def new
+    # @pedido = Pedido.find(params[:pedido_id])
+    # @estado = @pedido.estados.new
     @estado = Estado.new
   end
 
@@ -25,10 +29,12 @@ class EstadosController < ApplicationController
   # POST /estados.json
   def create
     @estado = Estado.new(estado_params)
+    # @pedido = Pedido.find(params[:pedido_id])
+    # @estado = @pedido.estados.new(estado_params)
 
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to @estado, notice: 'Estado was successfully created.' }
+        format.html { redirect_to estados_path, notice: 'Estado was successfully created.' }
         format.json { render :show, status: :created, location: @estado }
       else
         format.html { render :new }

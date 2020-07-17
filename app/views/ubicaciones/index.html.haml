@@ -1,10 +1,10 @@
 %h1 Listing ubicaciones
 
-.page-header
-%table.table.table-striped
+%table
   %thead
     %tr
-      %th Ubicacion
+      %th Club
+      %th Pedido
       %th
       %th
       %th
@@ -12,11 +12,12 @@
   %tbody
     - @ubicaciones.each do |ubicacion|
       %tr
-        %td= ubicacion.ubicacion
+        %td= ubicacion.club
+        %td= ubicacion.pedido
         %td= link_to 'Show', ubicacion
         %td= link_to 'Edit', edit_ubicacion_path(ubicacion)
         %td= link_to 'Destroy', ubicacion, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Ubicacion', new_ubicacion_path
+= link_to 'New Ubicacion', new_club_ubicacion_path(@club)

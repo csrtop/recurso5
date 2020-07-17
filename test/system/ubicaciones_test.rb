@@ -14,7 +14,8 @@ class UbicacionesTest < ApplicationSystemTestCase
     visit ubicaciones_url
     click_on "New Ubicacion"
 
-    fill_in "Ubicacion", with: @ubicacion.ubicacion
+    fill_in "Club", with: @ubicacion.club_id
+    fill_in "Pedido", with: @ubicacion.pedido_id
     click_on "Create Ubicacion"
 
     assert_text "Ubicacion was successfully created"
@@ -25,7 +26,8 @@ class UbicacionesTest < ApplicationSystemTestCase
     visit ubicaciones_url
     click_on "Edit", match: :first
 
-    fill_in "Ubicacion", with: @ubicacion.ubicacion
+    fill_in "Club", with: @ubicacion.club_id
+    fill_in "Pedido", with: @ubicacion.pedido_id
     click_on "Update Ubicacion"
 
     assert_text "Ubicacion was successfully updated"

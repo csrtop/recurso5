@@ -5,6 +5,7 @@
     %tr 
       %th No club
       %th Nombre
+      %th Almacenes
       /%th
       %th
       %th
@@ -14,6 +15,10 @@
       %tr
         %td= club.no_club
         %td= club.nombre
+        -#%td= link_to 'Almacenes', club_almacenes_path(club), class: 'btn btn-primary btn-sm'
+        -#%td= link_to 'Pasillos', club_pasillos_path(club), class: 'btn btn-primary btn-sm'
+        -#%td= link_to 'bahias', club_bahias_path(club), class: 'btn btn-primary btn-sm'
+        -#%td= link_to 'ubicaciones', club_ubicaciones_path(club), class: 'btn btn-primary btn-sm'
         /%td= link_to 'Productos', club_productos_path(club), class: 'btn btn-success btn-sm'
         %td= link_to 'Edit', edit_club_path(club), class: 'btn btn-warning btn-sm'
         %td= link_to 'Destroy', club, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' }
