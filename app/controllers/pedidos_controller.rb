@@ -1,5 +1,5 @@
 class PedidosController < ApplicationController
-  before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  before_action :set_pedido, only: [:show, :update, :edit, :destroy]
   before_action :authenticate_user!
 
   # GET /pedidos
@@ -34,12 +34,12 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    @pedido.club_id = current_user.club_id
+    #@pedido.club_id = current_user.club_id
     @pedido = Pedido.new(pedido_params)
     
     respond_to do |format|
       if @pedido.save
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
+        format.html { redirect_to pedidos_path, notice: 'Pedido was successfully created.' }
         format.json { render :show, status: :created, location: @pedido }
       else
         format.html { render :new }

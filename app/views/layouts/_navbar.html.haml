@@ -1,4 +1,4 @@
-/-if user_signed_in?
+-#-if user_signed_in?
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
   %a.navbar-brand{:href => "/pedidos"} Pedidos
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
@@ -31,7 +31,7 @@
 
       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
   - if current_user
-    = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
-    = link_to 'Profile', edit_user_registration_path, class: 'btn btn-info'
+    = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
+    = link_to 'Profile', edit_user_registration_path, class: 'btn btn-outline-info'
   - else
-    = link_to 'Login', new_user_session_path, class: 'btn btn-primary'
+    = link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary'

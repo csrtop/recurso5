@@ -14,7 +14,7 @@
   %thead
     %tr
       %th Orden
-      %th Oms
+      %th Oms / Vehiculo
       %th Estado Actual
       %th Cambiar Estado 
       %th Ubicacion 
@@ -53,7 +53,7 @@
 .text-center= page_entries_info
 
 
--#= link_to 'New Pedido manual', new_pedido_path, class: 'btn btn-success btn-sm'
+= link_to 'New Pedido manual', new_pedido_path, class: 'btn btn-success'
 
 -# - if entrega.picture.attached?
 -#   %td= image_tag (url_for(entrega.thumbnail))#thumbnail  
