@@ -76,6 +76,6 @@ class EntregasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def entrega_params
       # params.require(:entrega).permit(:entregado, :fecha_entrega, :pedido_id, :image, pictures:[])
-      params.require(:entrega).permit(:entregado, :fecha_entrega, :pedido_id, :image, :picture, :doc)
+      params.require(:entrega).permit(:entregado, :fecha_entrega, :entregadopor, :pedido_id, :image, :picture, :doc)
     end
 end

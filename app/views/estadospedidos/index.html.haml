@@ -1,0 +1,24 @@
+%h1 Listing estadospedidos
+
+%table
+  %thead
+    %tr
+      %th Estado
+      %th Pedido
+      %th Creado el 
+      %th
+      %th
+
+  %tbody
+    - @estadospedidos.each do |estadopedido|
+      %tr
+        %td= estadopedido.estado.descripcion
+        %td= estadopedido.pedido.orden
+        %td= estadopedido.estado.created_at
+        -#%td= link_to 'Show', estadopedido
+        -#%td= link_to 'Edit', edit_estadopedido_path(estadopedido)
+        -#%td= link_to 'Destroy', estadopedido, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Estadopedido', new_pedido_estadopedido_path(@pedido),class: 'btn btn-primary'

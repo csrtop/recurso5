@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :estados
   resources :bahias
   resources :pasillos
@@ -9,12 +8,14 @@ Rails.application.routes.draw do
       collection { post :import }
       resources :entregas
       resources :posiciones
+      resources :estadospedidos
   end
   resources :responsables
   resources :tipo_entregas
   resources :roles
   resources :productos
-  root 'home#index'
+  root 'pedidos#index'
+  get "search", to: "pedidos#search"
   resources :clubes do
     resources :ubicaciones  do
     end

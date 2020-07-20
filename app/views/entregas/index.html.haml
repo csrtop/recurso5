@@ -1,7 +1,7 @@
 %h2 Pedido: #{@pedido.orden}
 %h2 OMS: #{@pedido.OMS}
 %h2 Socio: #{@pedido.socio}
-
+%h2 Socio: #{@pedido.socio}
 .page-header
 %table.table.table-striped.table-bordered
   %thead
@@ -10,7 +10,7 @@
       %th Membresia
       -#%th pedido_pdf
       -#%th Fecha entrega
-      -#%th Pedido
+      %th Realizado por
       -#%th
       -# %th
       -# %th
@@ -18,19 +18,20 @@
   %tbody
     - @entregas.each do |entrega|
       %tr
-        -#%td= entrega.entregado
+        -#%td= entrega.entregadopor
         - if entrega.picture.attached?
-          %td= image_tag (url_for(entrega.thumbnail))#thumbnail  
+          %td= image_tag (url_for(entrega.thumbnail))#thumbnail 
+          %td= entrega.entregadopor 
         - else
         - if entrega.doc.attached?
           = link_to 'Descargar Pedido PDF', rails_blob_path(entrega.doc, disposition: 'attachment'), class: 'btn btn-primary btn-lg'
-          
+          %td= entrega.entregadopor
           -#%td= entrega.fecha_entrega
           -#%td= entrega.pedido.orden
         -#%td= link_to 'Show', [@pedido, @active_storage] 
         -# %td= link_to 'Edit', edit_entrega_path(entrega)
         -# %td= link_to 'Destroy', entrega, method: :delete, data: { confirm: 'Are you sure?' }
-
+      
 %br
 
 

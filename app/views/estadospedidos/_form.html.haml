@@ -1,0 +1,18 @@
+= form_for [@pedido, @estadopedido], html: {multipart: true }  do |f|
+
+  - if @estadopedido.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@estadopedido.errors.count, "error")} prohibited this estadopedido from being saved:"
+      %ul
+        - @estadopedido.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :estado
+    -#= f.text_field :estado
+    = f.collection_select :estado_id, Estado.all, :id, :descripcion, {prompt: "seleccione Estado"}
+  .field
+    = f.label :pedido
+    = f.text_field :pedido_id
+  .actions
+    = f.submit 'Save'

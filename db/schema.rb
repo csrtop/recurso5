@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_031929) do
+ActiveRecord::Schema.define(version: 2020_07_19_201555) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_031929) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.string "entregadopor"
     t.index ["pedido_id"], name: "index_entregas_on_pedido_id"
   end
 
@@ -66,6 +67,15 @@ ActiveRecord::Schema.define(version: 2020_07_17_031929) do
     t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "estadospedidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "estado_id", null: false
+    t.bigint "pedido_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["estado_id"], name: "index_estadospedidos_on_estado_id"
+    t.index ["pedido_id"], name: "index_estadospedidos_on_pedido_id"
   end
 
   create_table "pasillos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -82,16 +92,12 @@ ActiveRecord::Schema.define(version: 2020_07_17_031929) do
     t.integer "no_items"
     t.string "socio"
     t.date "fecha_orden"
-    t.bigint "tipo_entrega_id"
-    t.bigint "responsable_id"
     t.bigint "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "estado_id"
     t.index ["club_id"], name: "index_pedidos_on_club_id"
     t.index ["estado_id"], name: "index_pedidos_on_estado_id"
-    t.index ["responsable_id"], name: "index_pedidos_on_responsable_id"
-    t.index ["tipo_entrega_id"], name: "index_pedidos_on_tipo_entrega_id"
   end
 
   create_table "posiciones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -164,11 +170,11 @@ ActiveRecord::Schema.define(version: 2020_07_17_031929) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bahias", "clubes"
   add_foreign_key "entregas", "pedidos"
+  add_foreign_key "estadospedidos", "estados"
+  add_foreign_key "estadospedidos", "pedidos"
   add_foreign_key "pasillos", "clubes"
   add_foreign_key "pedidos", "clubes"
   add_foreign_key "pedidos", "estados"
-  add_foreign_key "pedidos", "responsables"
-  add_foreign_key "pedidos", "tipo_entregas"
   add_foreign_key "posiciones", "bahias"
   add_foreign_key "posiciones", "pasillos"
   add_foreign_key "posiciones", "pedidos"

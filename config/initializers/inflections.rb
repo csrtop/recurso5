@@ -21,6 +21,7 @@ inflect.irregular 'almacen', 'almacenes'
 inflect.irregular 'pasillo', 'pasillos'
 inflect.irregular 'bahia', 'bahias'
 inflect.irregular 'posicion', 'posiciones'
+inflect.irregular 'estadopedido', 'estadospedidos'
 
 #   inflect.uncountable %w( fish sheep )
     end

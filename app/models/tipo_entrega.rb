@@ -1,3 +1,3 @@
 class TipoEntrega < ApplicationRecord
-has_many :pedidos
+#has_many :pedidos
 end

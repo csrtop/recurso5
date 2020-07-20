@@ -7,19 +7,22 @@
         - @entrega.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :picture
+    = f.label :Subir_o_tomar_fotografia
     = f.file_field :picture
   .field
     = f.label :entregado
     = f.check_box :entregado
   .field
-    = f.label :fecha_entrega
-    = f.date_select :fecha_entrega
+    = f.hidden_field :entregadopor
+    = f.hidden_field :entregadopor, { :value => current_user.first_name}
   .field
-    = f.label :pedido
-    = f.text_field :pedido_id
+    = f.hidden_field :fecha_entrega
+    = f.hidden_field :fecha_entrega
+  -#.field
+    -#= f.label :pedido
+    -#= f.text_field :pedido_id
   .field
-    = f.label :doc
+    = f.label :Subir_Pedido_Pdf
     = f.file_field :doc
     
   .actions

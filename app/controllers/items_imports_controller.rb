@@ -5,7 +5,7 @@ class ItemsImportsController < ApplicationController
 
   def create
     @items_import = ItemsImport.new(params[:items_import])
-    
+
     if @items_import.save
       redirect_to pedidos_path
     else

@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem "haml-rails", "~> 2.0"
 gem 'rack-cors', '~> 0.4.0'
 gem 'unicorn'
-
+gem 'will_paginate', '~> 3.3.0'
+gem 'will_paginate-bootstrap4'
 #jquery
 gem 'best_in_place', '~> 3.0.1'
 

@@ -8,7 +8,7 @@
 = form_for @items_import do |f|
     - if @items_import.errors.any?
         = pluralize(@items_import.errors.count, "error")
-        Error duratente la importacion, por favor revise su archivo e intente nuevamente.
+        durante la importacion, por favor revise su archivo e intente nuevamente.
         %ul
         - @items_import.errors.full_messages.each do |msg|
             %li= msg

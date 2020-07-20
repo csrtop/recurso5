@@ -5,7 +5,11 @@ class EstadosController < ApplicationController
   # GET /estados.json
   def index
     # @pedido = Pedido.find(params[:pedido_id])
-    # @estados = @pedido.estados.order("id")
+    # if @estado.present?
+    #   @estados = @pedido.estado.order("id")
+    # else
+    #   @estados = Estado.all
+    # end 
     @estados = Estado.all
   end
 
@@ -16,8 +20,8 @@ class EstadosController < ApplicationController
 
   # GET /estados/new
   def new
-    # @pedido = Pedido.find(params[:pedido_id])
-    # @estado = @pedido.estados.new
+    #@pedido = Pedido.find(params[:pedido_id])
+    #@estado = @pedido.estados.new
     @estado = Estado.new
   end
 
