@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # add csrtop
 gem "haml-rails", "~> 2.0"
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors', '~> 1.0.5'
 gem 'unicorn'
 gem 'will_paginate', '~> 3.3.0'
 gem 'will_paginate-bootstrap4'
