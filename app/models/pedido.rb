@@ -14,6 +14,7 @@ class Pedido < ApplicationRecord
   #belongs_to :responsable
   belongs_to :club
   has_many :entregas, :dependent => :destroy
+  has_many :responsables, :dependent => :destroy
   has_many :posiciones, :dependent => :destroy
   accepts_nested_attributes_for :entregas
   has_many :ubicaciones, :dependent => :destroy

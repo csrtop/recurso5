@@ -12,5 +12,5 @@
         %ul
         - @items_import.errors.full_messages.each do |msg|
             %li= msg
-    = f.file_field :file    
-    = f.submit "Importar Archivo"
+    = f.file_field :file, class: "btn btn-outline-primary"    
+    = f.submit "Importar Archivo", class: "btn btn-outline-success"

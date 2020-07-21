@@ -1,5 +1,6 @@
 class BahiasController < ApplicationController
   before_action :set_bahia, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /bahias
   # GET /bahias.json

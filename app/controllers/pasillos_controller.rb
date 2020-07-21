@@ -1,5 +1,6 @@
 class PasillosController < ApplicationController
   before_action :set_pasillo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /pasillos
   # GET /pasillos.json

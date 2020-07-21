@@ -1,5 +1,6 @@
 class EstadosController < ApplicationController
   before_action :set_estado, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /estados
   # GET /estados.json

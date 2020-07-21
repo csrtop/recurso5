@@ -10,9 +10,14 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
 = render 'layouts/navbar'
-%p.notice= notice
-%p.alert= alert
+-if user_signed_in?
+  Usuario actual :
+  = current_user.last_name
+-else
 
+.container-fluid
+  %p.notice= notice
+  %p.alert= alert
 
 %body
   .container

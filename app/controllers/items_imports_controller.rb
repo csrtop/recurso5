@@ -1,4 +1,6 @@
 class ItemsImportsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @items_import = ItemsImport.new
   end

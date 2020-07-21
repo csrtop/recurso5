@@ -15,11 +15,11 @@
         %td= bahia.bahia
         -#%td= bahia.club.no_club
         -#%td= link_to 'Show', bahia
-        %td= link_to 'Edit', edit_bahia_path(bahia), class: 'btn btn-outline-warning'
-        %td= link_to 'Destroy', bahia, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Editar', edit_bahia_path(bahia), class: 'btn btn-outline-warning'
+        %td= link_to 'Eliminar', bahia, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Esta seguro de eliminar registro?' }
 
 %br
 
-= link_to 'New Bahia', new_bahia_path, class: 'btn btn-outline-success'
+= link_to 'Nueva Bahia', new_bahia_path, class: 'btn btn-outline-primary'
 %h2
 = link_to 'Regresar A Pedidos', pedidos_path, class: 'btn btn-outline-secondary'

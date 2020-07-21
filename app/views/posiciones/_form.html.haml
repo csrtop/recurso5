@@ -21,4 +21,4 @@
     = f.label :bahia
     = f.collection_select :bahia_id, Bahia.where("club_id=#{current_user.club_id}"), :id, :bahia, {prompt: "seleccione bahia"}
   .actions
-    = f.submit 'Save'
+    = f.submit 'Guardar', class: "btn btn-outline-primary"

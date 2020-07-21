@@ -4,7 +4,8 @@ class ResponsablesController < ApplicationController
   # GET /responsables
   # GET /responsables.json
   def index
-    @responsables = Responsable.all
+    @pedido = Pedido.find(params[:pedido_id])
+    @responsables = @pedido.responsables.order("id")
   end
 
   # GET /responsables/1
@@ -14,7 +15,8 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables/new
   def new
-    @responsable = Responsable.new
+    @pedido = Pedido.find(params[:pedido_id])
+    @responsable = @pedido.responsables.new
   end
 
   # GET /responsables/1/edit
@@ -24,11 +26,12 @@ class ResponsablesController < ApplicationController
   # POST /responsables
   # POST /responsables.json
   def create
-    @responsable = Responsable.new(responsable_params)
+    @pedido = Pedido.find(params[:pedido_id])
+    @responsable = @pedido.responsables.new(responsable_params)
 
     respond_to do |format|
       if @responsable.save
-        format.html { redirect_to @responsable, notice: 'Responsable was successfully created.' }
+        format.html { redirect_to pedido_responsables_path(@pedido), notice: 'Responsable was successfully created.' }
         format.json { render :show, status: :created, location: @responsable }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class ResponsablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def responsable_params
-      params.require(:responsable).permit(:responsable, :club_id)
+      params.require(:responsable).permit(:vehiculo, :user_id, :pedido_id, :comentario, :club_id)
     end
 end

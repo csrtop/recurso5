@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_201555) do
+ActiveRecord::Schema.define(version: 2020_07_21_055549) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -122,11 +122,16 @@ ActiveRecord::Schema.define(version: 2020_07_19_201555) do
   end
 
   create_table "responsables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "responsable"
+    t.string "vehiculo"
     t.bigint "club_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "comentario"
+    t.bigint "pedido_id", null: false
+    t.bigint "user_id", null: false
     t.index ["club_id"], name: "index_responsables_on_club_id"
+    t.index ["pedido_id"], name: "index_responsables_on_pedido_id"
+    t.index ["user_id"], name: "index_responsables_on_user_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -180,6 +185,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_201555) do
   add_foreign_key "posiciones", "pedidos"
   add_foreign_key "productos", "clubes"
   add_foreign_key "responsables", "clubes"
+  add_foreign_key "responsables", "pedidos"
+  add_foreign_key "responsables", "users"
   add_foreign_key "ubicaciones", "clubes"
   add_foreign_key "ubicaciones", "pedidos"
 end

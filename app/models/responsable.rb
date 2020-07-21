@@ -1,4 +1,5 @@
 class Responsable < ApplicationRecord
   belongs_to :club
-  #has_many :pedidos
+  belongs_to :pedido
+  belongs_to :user
 end

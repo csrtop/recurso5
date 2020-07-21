@@ -8,7 +8,7 @@ class PedidosController < ApplicationController
     #@pedidos = Pedido.all
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 6").order('orden')
     #@pedidos = Pedido.paginate(page: params[:page])
-    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 6").order('orden')
+    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('orden')
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").update_all('estado_id = @estadopedido.estado_id')
   end
 

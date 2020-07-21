@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :pedidos do
       collection { post :import }
       resources :entregas
+      resources :responsables
       resources :posiciones
       resources :estadospedidos
   end
-  resources :responsables
   resources :tipo_entregas
   resources :roles
   resources :productos

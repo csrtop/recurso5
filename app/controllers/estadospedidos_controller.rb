@@ -1,5 +1,7 @@
 class EstadospedidosController < ApplicationController
   before_action :set_estadopedido, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
   #after_action :actualiza_estado, only: [:show, :update]
   # GET /estadospedidos
   # GET /estadospedidos.json

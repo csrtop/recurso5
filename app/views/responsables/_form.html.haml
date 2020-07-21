@@ -1,4 +1,4 @@
-= form_for @responsable do |f|
+= form_for [@pedido, @responsable], html: { multipart: true } do |f|
   - if @responsable.errors.any?
     #error_explanation
       %h2= "#{pluralize(@responsable.errors.count, "error")} prohibited this responsable from being saved:"
@@ -7,10 +7,20 @@
           %li= message
 
   .field
-    = f.label :responsable
-    = f.text_field :responsable
+    = f.label :vehiculo
+    = f.text_field :vehiculo
+  .field
+    = f.label :pedido
+    = f.text_field :pedido_id
+  .field
+    = f.label :user
+    -#= f.text_field :user_id, { :value => current_user.last_name}
+    = f.collection_select :user_id, User.where("club_id=#{current_user.club_id}"), :id, :last_name, {prompt: "seleccione Usuario"}
   .field
     = f.label :club
-    = f.collection_select :club_id, Club.all, :id, :no_club, {prompt: "seleccione club"}
+    = f.text_field :club_id, { :value => current_user.club_id}
+  .field
+    = f.label :comentario
+    = f.text_area :comentario
   .actions
     = f.submit 'Save'

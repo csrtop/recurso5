@@ -1,13 +1,12 @@
-%h1 Listing estados
+%h1 Listado de estados
 
-%table
+.page-header
+%table.table.table-striped.table-bordered.table-responsive
   %thead
     %tr
       %th No estado
       %th Descripcion
-      %th
-      %th
-      %th
+
 
   %tbody
     - @estados.each do |estado|
@@ -20,4 +19,4 @@
 
 %br
 
-= link_to 'New Estado', new_estado_path
+= link_to 'Nuevo Estado', new_estado_path, class: "btn btn-outline-primary"

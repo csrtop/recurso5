@@ -10,12 +10,12 @@
           Clubes
           %span.sr-only (current)
       %li.nav-item
-        %a.nav-link{:href => "/productos"} Productos
+        %a.nav-link{:href => "/items_imports/new"} Subir pedidos
       %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        %a.navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           Mas Opciones
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "/items_imports/new"} Subir pedidos diarios
+          -#%a.dropdown-item{:href => "/items_imports/new"} Subir pedidos diarios
           %a.dropdown-item{:href => "/responsables"} Responsables
           %a.dropdown-item{:href => "/estados"} Estados
           .dropdown-divider
@@ -29,9 +29,9 @@
 
       %input.form-control.mr-sm-2{"aria-label" => "Search", :name => "q", :placeholder => "Orden", :type => "search"}
 
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Buscar
   - if current_user
-    = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
-    = link_to 'Profile', edit_user_registration_path, class: 'btn btn-outline-info'
+    = link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
+    = link_to 'Perfil', edit_user_registration_path, class: 'btn btn-outline-info'
   - else
-    = link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary'
+    = link_to 'Iniciar Sesion', new_user_session_path, class: 'btn btn-outline-primary'

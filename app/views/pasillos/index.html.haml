@@ -15,11 +15,11 @@
         %td= pasillo.pasillo
         -#%td= pasillo.club.no_club
         -#%td= link_to 'Show', pasillo
-        %td= link_to 'Edit', edit_pasillo_path(pasillo), class: 'btn btn-warning'
-        %td= link_to 'Destroy', pasillo, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Editar', edit_pasillo_path(pasillo), class: "btn btn-outline-danger"
+        %td= link_to 'Eliminar', pasillo, class: 'btn btn-danger', method: :delete, data: { confirm: 'Esta seguro que desea eliminar registro?' }
 
 %br
 
-= link_to 'Agregar Pasillo', new_pasillo_path, class: 'btn btn-primary'
+= link_to 'Agregar Pasillo', new_pasillo_path, class: "btn btn-outline-primary"
 %h2
-= link_to 'Regresar A Pedidos', pedidos_path, class: 'btn btn-success'
+= link_to 'Regresar A Pedidos', pedidos_path, class: "btn btn-outline-success"

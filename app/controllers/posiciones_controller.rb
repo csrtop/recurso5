@@ -1,5 +1,6 @@
 class PosicionesController < ApplicationController
   before_action :set_posicion, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /posiciones
   # GET /posiciones.json

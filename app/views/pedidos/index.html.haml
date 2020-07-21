@@ -22,7 +22,7 @@
       %th Socio
       %th Fecha orden
       %th Acciones
-      
+      %th Asignacion
 
   %tbody
     - @pedidos.each do |pedido|
@@ -40,20 +40,21 @@
         %td= pedido.no_items
         %td= pedido.socio
         %td= pedido.fecha_orden
-        %td= link_to 'Entregar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+        %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
         -#%td= collection_select :tipo_entrega, :tipo_entrega_id, TipoEntrega.all, :id, :entregado_por
         -#%td= pedido.tipo_entrega.entregado_por
         -#%td= pedido.responsable.responsable
         -#%td= pedido.club.no_club
-        %td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning'
+        -#%td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning'
+        %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
         /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
-        /%td= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' }
+        /%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 = will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
 .text-center= page_entries_info
 
 
-= link_to 'New Pedido manual', new_pedido_path, class: 'btn btn-success'
+= link_to 'Agregar pedido manual', new_pedido_path, class: 'btn btn-info btn-lg active'
 
 -# - if entrega.picture.attached?
 -#   %td= image_tag (url_for(entrega.thumbnail))#thumbnail  

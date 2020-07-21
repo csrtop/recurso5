@@ -25,10 +25,10 @@
     = f.number_field :no_items
   .field
     = f.label :socio
-    = f.text_field :socio
+    = f.text_field :socio  
   .field
     = f.label :fecha_orden
-    = f.date_select :fecha_orden 
+    = f.date_select :fecha_orden, {:disabled => true}
   -# .field
   -#   = f.label :tipo_entrega
   -#   = f.text_field :tipo_entrega
@@ -39,4 +39,4 @@
     = f.hidden_field :club
     = f.hidden_field :club_id, { :value => current_user.club_id}
     .actions
-    = f.submit 'Save', class: "btn btn-outline-primary"
+    = f.submit 'Guardar', class: "btn btn-outline-primary"
