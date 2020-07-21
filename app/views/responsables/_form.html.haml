@@ -10,17 +10,17 @@
     = f.label :vehiculo
     = f.text_field :vehiculo
   .field
-    = f.label :pedido
-    = f.text_field :pedido_id
+    = f.hidden_field :pedido
+    = f.hidden_field :pedido_id
   .field
     = f.label :user
     -#= f.text_field :user_id, { :value => current_user.last_name}
     = f.collection_select :user_id, User.where("club_id=#{current_user.club_id}"), :id, :last_name, {prompt: "seleccione Usuario"}
   .field
-    = f.label :club
-    = f.text_field :club_id, { :value => current_user.club_id}
+    = f.hidden_field :club
+    = f.hidden_field :club_id, { :value => current_user.club_id}
   .field
     = f.label :comentario
     = f.text_area :comentario
   .actions
-    = f.submit 'Save'
+    = f.submit 'Guardar', class: "btn btn-outline-primary"
