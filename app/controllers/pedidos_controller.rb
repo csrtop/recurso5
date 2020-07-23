@@ -14,7 +14,7 @@ class PedidosController < ApplicationController
 
   # Busqueda de pedidos
   def search
-    @pedidos = Pedido.where("orden LIKE ?","%" + params[:q] + "%")
+      @pedidos = Pedido.where("orden LIKE ?","%" + params[:q] + "%")
   end
 
   # GET /pedidos/1

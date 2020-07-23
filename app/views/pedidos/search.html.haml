@@ -1,3 +1,35 @@
-%h1 Search Results
+%h1 Resultado de la busqueda
 
-= render @pedidos
+.page-header
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Orden
+      %th Club
+      %th Oms / Vehiculo
+      %th Estado Actual
+      %th Cambiar Estado 
+      %th Ubicacion 
+      %th No Items
+      %th Socio
+      %th Fecha orden
+      %th Acciones
+      %th Asignacion
+
+  %tbody
+    - @pedidos.each do |pedido|
+      %tr
+        %td= pedido.orden
+        %td= pedido.club.no_club
+        %td= pedido.OMS
+        %td= pedido.estado.descripcion
+        %td= link_to 'Cambiar Estado', edit_pedido_path(pedido), class: 'btn btn-info'
+        %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
+        %td= pedido.no_items
+        %td= pedido.socio
+        %td= pedido.fecha_orden
+        %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+        %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
+        /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
+        /%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
+%br

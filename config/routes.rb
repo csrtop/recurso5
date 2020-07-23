@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get "search", to: "pedidos#search"
   resources :estados
   resources :bahias
   resources :pasillos
@@ -15,10 +15,8 @@ Rails.application.routes.draw do
   resources :roles
   resources :productos
   root 'pedidos#index'
-  get "search", to: "pedidos#search"
   resources :clubes do
-    resources :ubicaciones  do
-    end
+    resources :ubicaciones
   end
   resources :items_imports, only: [:new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
