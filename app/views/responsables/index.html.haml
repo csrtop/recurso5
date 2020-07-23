@@ -13,7 +13,8 @@
       %th Asignado 
       -#%th Club
       %th Comentario
-      %th Asignado hace
+      %th Tiempo desde asignacion
+      %th Hora de asignacion
       %th Cambiar estado
 
   %tbody
@@ -26,6 +27,7 @@
         %td= responsable.comentario
         -#%td= responsable.created_at
         %td= time_ago_in_words(responsable.created_at)
+        %td= responsable.created_at
         %td= link_to 'Cambiar Estado', edit_pedido_path(@pedido), class: 'btn btn-warning'
         -#%td= link_to 'Show', responsable
         -#%td= link_to 'Edit', edit_responsable_path(responsable)

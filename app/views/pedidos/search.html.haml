@@ -33,3 +33,5 @@
         /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
         /%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 %br
+
+= link_to 'Agregar pedido manual', new_pedido_path, class: 'btn btn-info btn-lg active'

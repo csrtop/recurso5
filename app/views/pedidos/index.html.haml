@@ -1,4 +1,5 @@
 %h1 Listado de pedidos
+
 -#%h1 Pedidos asignados : Pedido: #{@pedido.orden}
 -#= will_paginate @pedidos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
 -#.custom-file
@@ -36,7 +37,7 @@
         %td= pedido.estado.descripcion
         -#%td= pedido.estado.descripcion = estadospedidos = params[:estadospedidos]
         -#%td= link_to 'Estado', pedido_estadospedidos_path(pedido), class: 'btn btn-secondary btn-sm'
-        %td= link_to 'Cambiar Estado', edit_pedido_path(pedido), class: 'btn btn-info'
+        %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
         %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
         %td= pedido.no_items
         %td= pedido.socio

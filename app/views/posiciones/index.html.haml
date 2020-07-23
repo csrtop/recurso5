@@ -10,6 +10,7 @@
       -#%th Pedido
       %th Pasillo
       %th Bahia
+      %th Fecha de ubicacion
 
   %tbody
     - @posiciones.each do |posicion|
@@ -17,8 +18,9 @@
         -#%td= posicion.pedido.orden
         %td= posicion.pasillo.pasillo
         %td= posicion.bahia.bahia
+        %td= posicion.created_at
         -#%td= link_to 'Show', posicion
-        -#%td= link_to 'Edit', edit_posicion_path(posicion)
+        -#%td= link_to 'Editar', edit_posicion_path
         -#%td= link_to 'Destroy', posicion, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br

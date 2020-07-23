@@ -11,25 +11,36 @@
           %span.sr-only (current)
       %li.nav-item
         %a.nav-link{:href => "/items_imports/new"} Subir pedidos
-      %li.nav-item.dropdown
-        %a.navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Mas Opciones
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+        %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "/estados"} Estados
+        %span.sr-only (current)
+        %li.nav-item
+        %a.nav-link{:href => "/tipo_entregas"} Tipos de entregas
+        %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "/pasillos"} Pasillos
+        %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "/bahias"} Bahias
+        %span.sr-only (current)
+      -#%li.nav-item.dropdown
+        -#%a.navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          -#Mas Opciones
+        -#.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
           -#%a.dropdown-item{:href => "/items_imports/new"} Subir pedidos diarios
           -#%a.dropdown-item{:href => "/responsables"} Responsables
-          %a.dropdown-item{:href => "/estados"} Estados
-          .dropdown-divider
-          %a.dropdown-item{:href => "/tipo_entregas"} Tipos de entregas
-          %a.dropdown-item{:href => "/pasillos"} Pasillos
-          %a.dropdown-item{:href => "/bahias"} Bahias
-          %a.dropdown-item{:href => "/roles"} Roles
-      %li.nav-item
-        %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
-    %form.form-inline.my-2.my-lg-0{:action => "/search"}
+          -#%a.dropdown-item{:href => "/estados"} Estados
+          -#.dropdown-divider
+          -#%a.dropdown-item{:href => "/tipo_entregas"} Tipos de entregas
+          -#%a.dropdown-item{:href => "/pasillos"} Pasillos
+          -#%a.dropdown-item{:href => "/bahias"} Bahias
+          -#%a.dropdown-item{:href => "/roles"} Roles
+    -#%form.form-inline.my-2.my-lg-0{:action => "/search"}
 
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :name => "q", :placeholder => "Orden", :type => "text"}
+      -#%input.form-control.mr-sm-2{"aria-label" => "Search", :name => "q", :placeholder => "Buscar OMS", :type => "text"}
 
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Buscar
+      -#%button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Buscar
   - if current_user
     = link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
     = link_to 'Perfil', edit_user_registration_path, class: 'btn btn-outline-info'

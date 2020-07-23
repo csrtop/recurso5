@@ -10,11 +10,12 @@ class PedidosController < ApplicationController
     #@pedidos = Pedido.paginate(page: params[:page])
     @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('orden')
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").update_all('estado_id = @estadopedido.estado_id')
+    
   end
 
   # Busqueda de pedidos
   def search
-      @pedidos = Pedido.where("orden LIKE ?","%" + params[:q] + "%")
+      @pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
   end
 
   # GET /pedidos/1
@@ -36,7 +37,8 @@ class PedidosController < ApplicationController
   def create
     #@pedido.club_id = current_user.club_id
     @pedido = Pedido.new(pedido_params)
-    
+    @pedido.estado_id = 1
+    @pedido.club_id = current_user.club_id
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to pedidos_path, notice: 'Pedido was successfully created.' }
