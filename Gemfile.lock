@@ -173,7 +173,8 @@ GEM
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
-    rack-cors (0.4.1)
+    rack-cors (1.0.5)
+      rack (>= 1.6.0)
     rack-protection (2.0.8.1)
       rack
     rack-proxy (0.6.5)
@@ -329,7 +330,7 @@ DEPENDENCIES
   mysql2 (~> 0.4.4)
   paperclip (~> 6.0.0)
   puma (~> 4.1)
-  rack-cors (~> 0.4.0)
+  rack-cors (~> 1.0.5)
   rails (~> 6.0.3)
   roo (~> 2.8.0)
   roo-xls
