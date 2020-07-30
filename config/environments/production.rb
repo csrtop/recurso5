@@ -11,6 +11,7 @@ Rails.application.configure do
       enable_starttls_auto: true,
       user_name: "csrtop@gmail.com",
       password: "Andres15&" 
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
