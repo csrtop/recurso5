@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 
-body {
+  body {
     background-color: #fff;
     color: #333;
     margin: 33px; }
@@ -66,3 +66,8 @@ body {
   
   label {
     display: block; }  
+
+  tr.pos { 
+    color: #000; }
+  tr.neg { 
+    color: #f00; }

@@ -1,8 +1,12 @@
 %h1 Importar pedidos de Excel
 %p
-    Notas: Utilizar el formato valido para subir archivos
+    Notas: Utilizar el formato valido para subir archivos.
+
 %ul
     %li Por favor no elimine los titulos de cada celda.
+    %p
+    %h3 Encabezado: orden , OMS , no_items , socio , fecha_orden , club_id , estado_id
+    %p
     %li Importar solo archivos xls o xlsx.
 %h5 Seleccione archivo
 = form_for @items_import do |f|

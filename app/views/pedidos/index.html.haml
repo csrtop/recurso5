@@ -11,6 +11,8 @@
   = link_to 'Subir pedidos', new_items_import_path, class: 'btn btn-primary btn-lg active'
   = will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
 
+  = link_to 'Send Notification', root_path, remote: true
+
 .page-header
 %table.table.table-striped.table-bordered
   %thead
@@ -41,6 +43,7 @@
         %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
         %td= pedido.no_items
         %td= pedido.socio
+        -#%td.neg= statement.paid
         %td= pedido.fecha_orden
         %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
         -#%td= collection_select :tipo_entrega, :tipo_entrega_id, TipoEntrega.all, :id, :entregado_por
@@ -49,8 +52,8 @@
         -#%td= pedido.club.no_club
         -#%td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning'
         %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
-        /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
-        /%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
+        -#%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
+        -#%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 = will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
 .text-center= page_entries_info

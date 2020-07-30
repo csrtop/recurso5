@@ -1,0 +1,11 @@
+/ Modal
+#modalBahias.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modalBahiasLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#modal-bahias-title.modal-title Modal title
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"}
+      #modal-body-bahias.modal-body-bahias.modal-body
+    #modal-footer-bahias.modal-footer
+      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close

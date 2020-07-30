@@ -5,6 +5,6 @@ class Entrega < ApplicationRecord
   has_one_attached :doc
 
   def thumbnail
-    return self.picture.variant(resize:'500x300!').processed
+    return self.picture.variant(resize:'300x300').processed
   end
 end

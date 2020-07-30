@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "search", to: "pedidos#search"
+  get "pedmanual", to: "pedidos#pedmanual"
   resources :estados
   resources :bahias
   resources :pasillos

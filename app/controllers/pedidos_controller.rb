@@ -18,6 +18,11 @@ class PedidosController < ApplicationController
       @pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
   end
 
+  def pedmanual
+    @pedidos = Pedido.where("club_id=#{current_user.club_id} and no_items IS NULL").order('orden')
+#    @pedidos = Pedido.where(:estados).where(estados: { no_estado: 1 })
+    #@pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
+  end
   # GET /pedidos/1
   # GET /pedidos/1.json
   def show

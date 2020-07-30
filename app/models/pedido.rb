@@ -20,7 +20,7 @@ class Pedido < ApplicationRecord
   has_many :ubicaciones, :dependent => :destroy
   has_many :estadospedidos, :dependent => :destroy
   def thumbnail input
-    return self.pictures[input].variant(resize: '300x300!').processed
+    return self.pictures[input].variant(resize: '300x300').processed
   end
 end
 

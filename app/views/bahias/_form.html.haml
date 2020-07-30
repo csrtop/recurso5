@@ -1,16 +1,11 @@
-= form_for @bahia do |f|
-  - if @bahia.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@bahia.errors.count, "error")} prohibited this bahia from being saved:"
-      %ul
-        - @bahia.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :bahia
-    = f.text_field :bahia
-  .field
-    = f.hidden_field :club
-    = f.hidden_field :club_id, { :value => current_user.club_id}
-  .actions
-    = f.submit 'Guardar', class: "btn btn-outline-primary"
+= form_for @bahia, remote: true do |f|
+  .form-group
+    %h4.control-label Nueva Bahia:
+  %div{:class => "item form-group#{@bahia.errors[:bahia].any? ? 'has-error has-feedback' : ''}"}
+    = f.label :bahia, "Bahia:"
+    .input-group
+      = f.text_field :bahia, {:class=> "form-control", :placeholder=>"Introduzca nombre de bahia..."}
+      - if @bahia.errors[:bahia].any?
+        %p.bg-danger= @bahia.errors[:bahia].to_s[/\w([^"]*)/]
+  .actions.col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+    = f.submit @bahia.new_record? ? "Crear Bahia" : "Actualizar Bahia", :class => "btn btn-success"
