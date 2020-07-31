@@ -1,73 +1,141 @@
-@import "~bootstrap/scss/bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
+
+$body-bg:                          #fafafa !important;
+$font-family-sans-serif:           'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$primary:                          #3897F0;
+$jumbotron-bg:                     white;
+
+@import '~bootstrap/scss/bootstrap';
+
+.navbar {
+  background-color: #fff;
+  font-weight: bold;
+  height: 77px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.navbar-brand {
+  font-family: 'Oleo Script', cursive;
+  font-size: 25px;
+  color: #262626;
+}
+
+.navbar-nav {
+  font-weight: bold;
+}
 
 
-  body {
-    background-color: #fff;
-    color: #333;
-    margin: 33px; }
-  
-  body, p, ol, ul, td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 19px;
-    line-height: 15px; }
-  
-  pre {
-    background-color: #eee;
-    padding: 10px;
-    font-size: 11px; }
-  
-  a {
-    color: #000; }
-  
-  a:visited {
-    color: #666; }
-  
-  a:hover {
-    color: #fff;
-    background-color: #eee; }
-  
-  th {
-    padding-bottom: 5px; }
-  
-  td {
-    padding: 0 5px 7px; }
-  
-  div.field,
-  div.actions {
-    margin-bottom: 10px; }
-  
-  #notice {
-    color: green; }
-  
-  .field_with_errors {
-    padding: 2px;
-    background-color: red;
-    display: table; }
-  
-  #error_explanation {
-    width: 450px;
-    border: 2px solid red;
-    padding: 7px 7px 0;
-    margin-bottom: 20px;
-    background-color: #f0f0f0; }
-  
-  #error_explanation h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px -7px 0;
-    background-color: #c00;
-    color: #fff; }
-  
-  #error_explanation ul li {
+.main-wrapper {
+  margin-top: 100px
+}
+
+.image {
+  padding-bottom: 30px;
+}
+
+.posts-wrapper {
+  padding-top: 40px;
+  margin: 0 auto;
+  max-width: 642px;
+  width: 100%;
+}
+
+.post {
+  background-color: #fff;
+  border-color: #edeeee;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  margin-bottom: 60px;
+  .post-head {
+    flex-direction: row;
+    height: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;
+    color: #125688;
     font-size: 15px;
-    list-style: square; }
-  
-  label {
-    display: block; }  
+    line-height: 18px;
+    .user-name, .time-ago {
+      display: inline;
+    }
+    .user-name {
+      font-weight: 500;
+    }
+    .time-ago {
+      color: #A5A7AA;
+      float: right;
+    }
+  }
+}
 
-  tr.pos { 
-    color: #000; }
-  tr.neg { 
-    color: #f00; }
+.post-bottom {
+  .user-name, .comment-content {
+    display: inline;
+  }
+  .description {
+    margin-bottom: 7px;
+  }
+  .user-name {
+    font-weight: 500;
+    margin-right: 0.3em;
+    color: #125688;
+    font-size: 15px;
+  }
+  .user-name, .caption-content {
+    display: inline;
+  }
+  .comment {
+    margin-top: 7px;
+    .user-name {
+      font-weight: 500;
+      margin-right: 0.3em;
+    }
+    .delete-comment {
+      float: right;
+      color: #515151;
+    }
+  }
+  margin-bottom: 7px;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.comment_content {
+  font-size: 15px;
+  line-height: 18px;
+  border: medium none;
+  width: 100%;
+  color: #4B4F54;
+}
+
+.comment-like-form {
+  padding-top: 24px;
+  margin-top: 13px;
+  margin-left: 24px;
+  margin-right: 24px;
+  min-height: 68px;
+  align-items: center;
+  border-top: 1px solid #EEEFEF;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form-wrapper {
+  width: 60%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 40px;
+  border: 1px solid #eeefef;
+  border-radius: 3px;
+}
+
+.edit-links {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
