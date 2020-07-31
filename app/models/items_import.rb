@@ -1,9 +1,9 @@
 class ItemsImport
     include ActiveModel::Model
     require 'roo'
-
-    attr_accessor :file, :pedido, :club_id
     
+
+    attr_accessor :file, :pedido, :club_id, :user
 
 
     def initialize(attributes={})
@@ -49,11 +49,9 @@ class ItemsImport
             #fin busca descripcion del estado
             
             #raise current_user.club_id.to_s
-
-            pedido.club_id = row["club_id"]
+            #pedido.club_id = row["club_id"]
             #puts "eeeeeee"+pedido.orden.to_s
-            #@current_user = current_user.club_id
-            #pedido.club_id = current_user
+            pedido.club_id = current_user.club_id
             pedido
         end
     end

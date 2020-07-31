@@ -40,7 +40,6 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    #@pedido.club_id = current_user.club_id
     @pedido = Pedido.new(pedido_params)
     @pedido.estado_id = 1
     @pedido.club_id = current_user.club_id
