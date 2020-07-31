@@ -9,8 +9,8 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: rails.application.secrets.mail_username,
-    password: rails.application.secrets.mail_password
+    user_name: Rails.application.secrets.mail_username,
+    password: Rails.application.secrets.mail_password
 
 }
   # Code is not reloaded between requests.
