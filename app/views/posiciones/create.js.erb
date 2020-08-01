@@ -1,0 +1,2 @@
+$('#posiciones_<%= @pedido.id %>').append("<%=j render 'posiciones/posicion', pedido: @pedido, posicion: @posicion %>");
+$('#posicion_content_<%= @pedido.id %>').val('')

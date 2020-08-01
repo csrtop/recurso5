@@ -31,15 +31,19 @@ class PosicionesController < ApplicationController
     @pedido = Pedido.find(params[:pedido_id])
     @posicion = @pedido.posiciones.new(posicion_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @posicion.save
-        format.html { redirect_to pedidos_path, notice: 'Posicion was successfully created.' }
-        format.json { render :show, status: :created, location: @posicion }
+        #format.html { redirect_to pedidos_path, notice: 'Posicion was successfully created.' }
+        flash[:success] = "Ubicacion guardada"
+        redirect_back fallback_location: pedidos_path
+        #format.json { render :show, status: :created, location: @posicion }
       else
-        format.html { render :new }
-        format.json { render json: @posicion.errors, status: :unprocessable_entity }
+        flash[:alert] = "Revisa algo salio mal"
+        #format.html { render :new }
+        render pedidos_path
+        #format.json { render json: @posicion.errors, status: :unprocessable_entity }
       end
-    end
+    
   end
 
   # PATCH/PUT /posiciones/1
@@ -59,11 +63,14 @@ class PosicionesController < ApplicationController
   # DELETE /posiciones/1
   # DELETE /posiciones/1.json
   def destroy
+    
     @posicion.destroy
-    respond_to do |format|
-      format.html { redirect_to posiciones_url, notice: 'Posicion was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Ubicacion eliminada"
+    redirect_back fallback_location: pedidos_path
+    #respond_to do |format|
+      #format.html { redirect_to posiciones_url, notice: 'Posicion was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
   end
 
   private

@@ -21,7 +21,7 @@
         %td= posicion.created_at
         -#%td= link_to 'Show', posicion
         -#%td= link_to 'Editar', edit_posicion_path
-        -#%td= link_to 'Destroy', posicion, method: :delete, data: { confirm: 'Are you sure?' }
+        -#%td= link_to 'Destroy', pedido_posicion_path(@pedido), method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 = link_to 'Nueva Ubicación', new_pedido_posicion_path(@pedido), class: "btn btn-outline-primary"

@@ -1,7 +1,6 @@
 class ItemsImport
     include ActiveModel::Model
     require 'roo'
-    
 
     attr_accessor :file, :pedido, :club_id, :user
 

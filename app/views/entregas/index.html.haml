@@ -24,7 +24,7 @@
         - else
         - if entrega.doc.attached?
           = link_to 'Descargar Pedido PDF', rails_blob_path(entrega.doc, disposition: 'attachment'), class: 'btn btn-primary btn-lg'
-          %td= entrega.entregadopor
+          -#%td= entrega.entregadopor
           -#%td= entrega.fecha_entrega
           -#%td= entrega.pedido.orden
         -#%td= link_to 'Show', [@pedido, @active_storage] 

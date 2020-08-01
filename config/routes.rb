@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get "search", to: "pedidos#search"
   get "pedmanual", to: "pedidos#pedmanual"
   resources :estados
+  resources :items_imports, only: [:new, :create]
   resources :bahias
   resources :pasillos
-  devise_for :users
+  #devise_for :users #add31_07
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :pedidos do
       collection { post :import }
       resources :entregas
@@ -20,6 +22,5 @@ Rails.application.routes.draw do
   resources :clubes do
     resources :ubicaciones
   end
-  resources :items_imports, only: [:new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

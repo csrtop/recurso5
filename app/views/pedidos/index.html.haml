@@ -1,4 +1,6 @@
 %h1 Listado de pedidos
+.alert.alert-danger{:role => "alert"}
+  %h2 Mis pedidos asignados: #{@contadorpedidos}
 
 -#%h1 Pedidos asignados : Pedido: #{@pedido.orden}
 -#= will_paginate @pedidos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
@@ -6,7 +8,8 @@
 -#  %input#customFile.custom-file-input{:type => "file"}/
 -#  %label.custom-file-label{:for => "customFile"} Choose file
 
-%h3 Importar pedidos
+%h3 Importar pedidos 
+
 = form_tag import_pedidos_path, multipart: true do
   = link_to 'Subir pedidos', new_items_import_path, class: 'btn btn-primary btn-lg active'
   = will_paginate @pedidos, list_classes: %w(pagination justify-content-end)

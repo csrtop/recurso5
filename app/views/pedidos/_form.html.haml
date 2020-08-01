@@ -1,32 +1,38 @@
 = form_for @pedido do |f|
   - if @pedido.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@pedido.errors.count, "error")} prohibited this pedido from being saved:"
-      %ul
-        - @pedido.errors.full_messages.each do |message|
-          %li= message
-  .field
+    .alert.alert-danger.alert-dismissable
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+      %ul.list-unstyled
+        - @pedido.errors.full_messages.each do |msg|
+          = content_tag :li, msg, :id => "error_#{msg}" if msg.is_a?(String)
+
+    -##error_explanation
+      -#%h2= "#{pluralize(@pedido.errors.count, "error")} prohibited this pedido from being saved:"
+      -#%ul
+        -#- @pedido.errors.full_messages.each do |message|
+        -# %li= message
+  .form-group
     -#= f.label :ubicacion
     -# = f.collection_select :ubicacion_id, Ubicacion.all, :id, :ubicacion, {prompt: "seleccione ubicacion"}
-  .field
+  .form-group
     = f.label :Estado
     = f.collection_select :estado_id, Estado.all, :id, :descripcion, {prompt: "seleccione estado"}
   -# .field
   -#   = f.label :pictures
   -#   = f.file_field :pictures, multiple: true
-  .field
+  .form-group
     = f.label :orden
     = f.number_field :orden
-  .field
+  .form-group
     = f.label :OMS
     = f.text_field :OMS
-  .field
+  .form-group
     = f.label :no_items
     = f.number_field :no_items
-  .field
+  .form-group
     = f.label :socio
     = f.text_field :socio  
-  .field
+  .form-group
     = f.label :fecha_orden
     = f.date_select :fecha_orden, {:disabled => true}
   -# .field
@@ -35,7 +41,7 @@
   -#.field
     -#= f.label :responsable
     -#= f.text_field :responsable
-  .field
+  .form-group
     = f.hidden_field :club
     = f.hidden_field :club_id, { :value => current_user.club_id}
     .actions

@@ -1,0 +1,5 @@
+.posicion{:id => "posicion_#{posicion.id}"}
+    .posicion-content
+    = posicion.content
+    = link_to pedido_posicion_path(pedido, posicion), method: :delete, data: { confirm: "¿Estás segura?" } do
+    %span.glyphicon.glyphicon-remove.delete-posicion
