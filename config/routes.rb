@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   get "search", to: "pedidos#search"
   get "pedmanual", to: "pedidos#pedmanual"
+  get "mispedidos", to: "pedidos#mispedidos"
   resources :estados
   resources :items_imports, only: [:new, :create]
   resources :bahias

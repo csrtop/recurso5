@@ -26,6 +26,15 @@ class PedidosController < ApplicationController
   end
   # GET /pedidos/1
   # GET /pedidos/1.json
+
+  def mispedidos
+    #@contadorpedidos = Responsable.where("user_id=#{current_user.id}")
+    #puts "algo"+@contadorpedidos.to_s
+    @pedidos = Pedido.where("pedido_id = #{@contadorpedidos.pedido_id}")
+    #@contadorpedidos = Responsable.where("user_id=#{current_user.id}")
+    #@pedidos = @contadorpedidos
+  end
+
   def show
   end
 
