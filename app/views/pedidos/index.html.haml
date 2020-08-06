@@ -1,7 +1,8 @@
 %h1 Listado de pedidos
 
-.alert.alert-danger{:role => "alert"}
-  %h2 Mis pedidos asignados: #{@contadorpedidos}
+-if @contadorpedidos >= 1
+  .alert.alert-danger{:role => "alert"}
+    %h2 Mis pedidos asignados: #{@contadorpedidos}
 
 -#%h1 Pedidos asignados : Pedido: #{@pedido.orden}
 -#= will_paginate @pedidos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

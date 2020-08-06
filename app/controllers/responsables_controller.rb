@@ -31,7 +31,7 @@ class ResponsablesController < ApplicationController
 
     respond_to do |format|
       if @responsable.save
-        format.html { redirect_to pedido_responsables_path(@pedido), notice: 'Responsable was successfully created.' }
+        format.html { redirect_to pedidos_path, notice: 'Responsable Asignado.' }
         format.json { render :show, status: :created, location: @responsable }
       else
         format.html { render :new }
