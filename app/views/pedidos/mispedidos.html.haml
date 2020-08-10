@@ -1,28 +1,28 @@
-%h1 Mis pedidos
+.form-wrapper
+  %h1 Mis pedidos
 
-.page-header
-%table.table.table-striped.table-bordered
-  %thead
-    %tr
-      %th Orden
-      %th Oms / Vehiculo
-      %th Estado Actual
-      %th Cambiar Estado 
-      %th Ubicacion 
-      %th No Items
-      %th Socio
-      %th Fecha orden
-      %th Acciones
-  %tbody
-    - @pedidos.each do |pedido|
+  .page-header
+  %table.table.table-striped.table-bordered
+    %thead
       %tr
-        %td= pedido.orden
-        %td= pedido.OMS
-        %td= pedido.estado.descripcion
-        %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
-        %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
-        %td= pedido.no_items
-        %td= pedido.socio
-        %td= pedido.fecha_orden
-        %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
-        
+        %th Orden
+        %th Oms / Vehiculo
+        %th Estado Actual
+        %th Cambiar Estado 
+        %th Ubicacion 
+        %th No Items
+        %th Socio
+        %th Fecha orden
+        %th Acciones
+    %tbody
+      - @pedidos.each do |pedido|
+        %tr
+          %td= pedido.orden
+          %td= pedido.OMS
+          %td= pedido.estado.descripcion
+          %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
+          %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
+          %td= pedido.no_items
+          %td= pedido.socio
+          %td= pedido.fecha_orden
+          %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'

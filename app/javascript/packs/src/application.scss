@@ -133,10 +133,10 @@ $jumbotron-bg:                     white;
 }
 
 .form-wrapper {
-  width: 60%;
-  margin: 20px auto;
+  width: 97%;
+  margin: 10px auto;
   background-color: #fff;
-  padding: 40px;
+  padding: 1px;
   border: 1px solid #eeefef;
   border-radius: 3px;
 }
@@ -144,4 +144,19 @@ $jumbotron-bg:                     white;
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.left {
+  float: left;
+  width: 125px;
+  text-align: right;
+  margin: 2px 10px;
+  display: inline;
+}
+
+.right {
+  float: left;
+  text-align: left;
+  margin: 2px 10px;
+  display: inline;
 }

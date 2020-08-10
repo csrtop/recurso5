@@ -25,5 +25,3 @@ document.addEventListener("turbolinks:load", () => { //adddd manually
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-Notification.requestPermission().then(function(result){})

@@ -1,0 +1,27 @@
+%h1 Pedidos cerrados
+.page-header
+%table.table.table-striped.table-bordered
+    %thead
+        %tr
+        %th Orden
+        %th Oms / Vehiculo
+        %th Estado Actual
+        %th No Items
+        %th Socio
+        %th Fecha orden
+        %th Acciones
+
+    %tbody
+    - @pedidos.each do |pedido|
+        %tr
+            %td= pedido.orden
+            %td= pedido.OMS
+            %td= pedido.estado.descripcion
+            %td= pedido.no_items
+            %td= pedido.socio
+            %td= pedido.fecha_orden
+            %td= link_to 'visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+    %br
+
+= will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
+.text-center= page_entries_info

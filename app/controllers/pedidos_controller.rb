@@ -8,9 +8,11 @@ class PedidosController < ApplicationController
     #@pedidos = Pedido.all
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 6").order('orden')
     #@pedidos = Pedido.paginate(page: params[:page])
-    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('orden')
+    
+    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('created_at DESC')
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").update_all('estado_id = @estadopedido.estado_id')
-    @contadorpedidos = Responsable.where("user_id=#{current_user.id}").count
+    @contadorpedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5").count
+    #@contadorpedidos = Responsable.where("user_id=#{current_user.id}").count
     #puts "algo"+@contadorpedidos.to_s
   end
 
@@ -20,7 +22,7 @@ class PedidosController < ApplicationController
   end
 
   def pedmanual
-    @pedidos = Pedido.where("club_id=#{current_user.club_id} and no_items IS NULL").order('orden')
+    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and no_items IS NULL").order('orden')
 #    @pedidos = Pedido.where(:estados).where(estados: { no_estado: 1 })
     #@pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
   end
@@ -28,49 +30,25 @@ class PedidosController < ApplicationController
   # GET /pedidos/1.json
 
   def mispedidos
-    #@pedidos = Responsable.where("user_id=#{current_user.id}").select("pedido.club_id=#{current_user.club_id}")
-    #@pedidos = Pedido.joins("INNER JOIN responsables ON responsables.user_id = #{current_user}")
-    #@pedidos = Pedido.where("club_id=#{current_user.club_id} and pedido.id = responsable.pedido_id").order('orden')
-    
+    #muestra los pedidos asignados por usuario
+    @pedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5")
+
     #guarda usuario en variable
     #@userpedidos = current_user.id
     #puts 'user'+@userpedidos.to_s
 
-    #@pedidos = Pedido.joins(:responsables).where('responsables.pedido_id = pedidos.id and responsables.user_id = @userpedidos')
-    
-    #funciona
     #@pedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and responsables.pedido_id = pedidos.id")
 
-    #muestra los pedidos asignados por usuario
-    @pedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id}")
-
-
-    #(pedidos a, recurso5_development.responsables b
-    #where b.pedido_id = a.id and b.club_id = a.club_id; 
-
-    #@pedidos = Responsable.where("responsables.user_id = #{current_user.id}")
-    #@pedidos = Pedido.where("pedido.id = @pedidos2") 
-    #@pedidos = Pedido.joins(:responsables)
-    
-    #@pedidos = Pedido.where("@pedidos2 = @pedidos3")
-    #raise @pedidos.to_s
-
-    
-    
-    #.where('responsable.user_id = @userpedidos')
-    #    @pedidos = Pedido.where("club_id=#{current_user.club_id}").Responsable.where("pedido.id = #{Responsable.pedido_id}")
-
-
-
-    #@pedidos = Pedido.where("club_id=#{current_user.club_id} ")
-    #@pedidos = Responsable.where("user_id=#{current_user.id}") and (Pedido.where("club_id=#{current_user.club_id}"))
-    
-    #@pedidos = Pedido.where("exists ( SELECT a.pedido_id, b.orden, b.OMS, b.no_items FROM responsables a, pedidos b where a.user_id = 1 and b.club_id = 4)")
     
   end
 
   def show
   end
+
+  def pedidoscerrados
+    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id = 5").order('orden')
+  end
+
 
   # GET /pedidos/new
   def new

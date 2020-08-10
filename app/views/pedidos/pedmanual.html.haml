@@ -1,4 +1,4 @@
-%h1 Resultado de la busqueda
+%h1 Pedidos Manuales
 
 .page-header
 %table.table.table-striped.table-bordered
@@ -33,5 +33,7 @@
         /%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
         /%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
 %br
+= will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
+.text-center= page_entries_info
 
 = link_to 'Agregar pedido manual', new_pedido_path, class: 'btn btn-info btn-lg active'

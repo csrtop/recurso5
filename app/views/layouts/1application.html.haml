@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title Registro Click And Go
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'layouts/navbar'
+    - flash.each do |key, value|
+      
+      %div{:class => "alert alert-#{key} == 'notice' ? 'success' : 'danger'"}
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+      = content_tag :div, value, :id => "flash_#{key}"
+    .container
+      = yield
+      %footer.blockquote-footer
+        © Developed by: César Top
