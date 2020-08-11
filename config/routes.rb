@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "pedmanual", to: "pedidos#pedmanual"
   get "mispedidos", to: "pedidos#mispedidos"
   get "pedidoscerrados", to: "pedidos#pedidoscerrados"
+  get "pedidosasignados", to: "pedidos#pedidosasignados"
   resources :estados
   resources :items_imports, only: [:new, :create]
   resources :bahias

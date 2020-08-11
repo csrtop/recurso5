@@ -9,7 +9,7 @@ class Pedido < ApplicationRecord
   #   end
   
   belongs_to :estado
-  has_many_attached :pictures
+  has_many_attached :pictures, :dependent => :destroy
   #belongs_to :tipo_entrega
   #belongs_to :responsable
   belongs_to :club
@@ -20,7 +20,7 @@ class Pedido < ApplicationRecord
   has_many :ubicaciones, :dependent => :destroy
   has_many :estadospedidos, :dependent => :destroy
   def thumbnail input
-    return self.pictures[input].variant(resize: '400x400^', extent: '600x600').processed
+    return self.pictures[input].variant(resize: '600x600^', extent: '600x600').processed
   end
 end
 

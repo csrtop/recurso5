@@ -19,15 +19,21 @@
       %form.form-inline.my-2.my-lg-0{:action => "/search"}
         %input.form-control.mr-sm-2{"aria-label" => "Search", :name => "q", :placeholder => "Buscar OMS", :type => "text"}
         %button.btn.btn-outline-primary.my-2.my-sm-0{:type => "submit"} Buscar
-      %h1
-      %form.form-inline.my-2.my-lg-0{:action => "/pedmanual"}
-        %button.btn.btn-outline-info.my-2.my-sm-0{:type => "submit"} Ver Pedidos Manuales
-      %h1
-      %form.form-inline.my-2.my-lg-0{:action => "/mispedidos"}
-        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Mis pedidos
-      %h1
-      %form.form-inline.my-2.my-lg-0{:action => "/pedidoscerrados"}
-        %button.btn.btn-outline-dark.my-2.my-sm-0{:type => "submit"} Pedidos Cerrados
+        %a.btn.btn-success{:href => "/mispedidos", :role => "button"} Mis pedidos
+        %a.btn.btn-primary{:href => "/pedmanual", :role => "button"} Ver Pedidos Manuales
+        %a.btn.btn-dark{:href => "/pedidoscerrados", :role => "button"} Pedidos cerrados
+        %a.btn.btn-info{:href => "/pedidosasignados", :role => "button"} Pedidos asignados
+
+      -#%h1
+      -#%form.form-inline.my-2.my-lg-0{:action => "/pedmanual"}
+        -#%button.btn.btn-outline-info.my-2.my-sm-0{:type => "submit"} Ver Pedidos Manuales
+      -#%h1
+      -#%form.form-inline.my-2.my-lg-0{:action => "/mispedidos"}
+        -#%button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Mis pedidos
+        
+      -#%h1
+      -#%form.form-inline.my-2.my-lg-0{:action => "/pedidoscerrados"}
+        -#%button.btn.btn-outline-dark.my-2.my-sm-0{:type => "submit"} Pedidos Cerrados
   -flash.each do |key, value|
     %div{:class => "alert alert-#{key} == 'notice' ? 'success' : 'danger'"}
     %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
