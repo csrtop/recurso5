@@ -8,8 +8,14 @@ class PedidosController < ApplicationController
     #@pedidos = Pedido.all
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 6").order('orden')
     #@pedidos = Pedido.paginate(page: params[:page])
+
+    #muestra solo los pedidos que no estan asignados
+    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).left_outer_joins(:responsables).where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id != 5 and responsables.pedido_id IS NULL")
+
+    #muestra todos los pedidos aunque esten asignados
+    #@pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('updated_at DESC')
     
-    @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('updated_at DESC')
+
     #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").update_all('estado_id = @estadopedido.estado_id')
     @contadorpedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5").count
     #@contadorpedidos = Responsable.where("user_id=#{current_user.id}").count
@@ -32,7 +38,8 @@ class PedidosController < ApplicationController
   def mispedidos
     #muestra los pedidos asignados por usuario
     @pedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5")
-
+    
+    
     #guarda usuario en variable
     #@userpedidos = current_user.id
     #puts 'user'+@userpedidos.to_s
