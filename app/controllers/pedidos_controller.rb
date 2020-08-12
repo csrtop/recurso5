@@ -24,7 +24,7 @@ class PedidosController < ApplicationController
 
   # Busqueda de pedidos
   def search
-      @pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
+      @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("OMS LIKE ?","%" + params[:q] + "%")
   end
 
   def pedmanual
