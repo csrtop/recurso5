@@ -14,8 +14,8 @@
         %td= estado.no_estado
         %td= estado.descripcion
         -#%td= link_to 'Show', estado
-        -#%td= link_to 'Edit', edit_estado_path(estado)
-        -#%td= link_to 'Destroy', estado, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_estado_path(estado)
+        %td= link_to 'Destroy', estado, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
