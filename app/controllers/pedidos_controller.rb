@@ -52,7 +52,7 @@ class PedidosController < ApplicationController
     #funciona
     #@pedidos = Responsable.joins(:pedido).where("pedidos.estado_id != 5").order('created_at DESC')
     
-    @pedidos = Pedido.includes(:responsables).where("pedidos.estado_id != 5").order('responsables.user_id DESC')
+    @pedidos = Pedido.includes(:responsables).where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id != 5").order('responsables.user_id DESC')
 
   end
 
