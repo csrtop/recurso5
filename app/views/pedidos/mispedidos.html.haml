@@ -20,7 +20,7 @@
           %td= pedido.orden
           %td= pedido.OMS
           %td= pedido.estado.descripcion
-          %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
+          %td= link_to 'Entregar', edit_pedido_path(pedido), class: 'btn btn-info'
           %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
           %td= pedido.no_items
           %td= pedido.socio

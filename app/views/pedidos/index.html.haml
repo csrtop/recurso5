@@ -36,12 +36,7 @@
       %tr
         %td= pedido.orden
         %td= pedido.OMS
-        -#%td= collection_select :estado, :estado_id, Estado.all, :id, :descripcion
-        -#%td= link_to 'Asignar ubicacion', edit_pedido_path(pedido), class: 'btn btn-success btn-sm'
-        -#%td= link_to 'Asignar ubicacion', new_pedido_ubicacion_path(pedido), class: 'btn btn-success btn-sm'
         %td= pedido.estado.descripcion
-        -#%td= pedido.estado.descripcion = estadospedidos = params[:estadospedidos]
-        -#%td= link_to 'Estado', pedido_estadospedidos_path(pedido), class: 'btn btn-secondary btn-sm'
         %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
         %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
         %td= pedido.no_items
@@ -49,11 +44,6 @@
         -#%td.neg= statement.paid
         %td= pedido.fecha_orden
         %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
-        -#%td= collection_select :tipo_entrega, :tipo_entrega_id, TipoEntrega.all, :id, :entregado_por
-        -#%td= pedido.tipo_entrega.entregado_por
-        -#%td= pedido.responsable.responsable
-        -#%td= pedido.club.no_club
-        -#%td= link_to 'Mostrar', pedido_entregas_path(pedido), class: 'btn btn-warning'
         %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
         -#%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
         -#%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }

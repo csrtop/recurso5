@@ -5,18 +5,12 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    #@pedidos = Pedido.all
-    #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 6").order('orden')
-    #@pedidos = Pedido.paginate(page: params[:page])
-
     #muestra solo los pedidos que no estan asignados
     @pedidos = Pedido.paginate(page: params[:page], per_page: 15).left_outer_joins(:responsables).where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id != 5 and responsables.pedido_id IS NULL")
 
     #muestra todos los pedidos aunque esten asignados
     #@pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and estado_id != 5").order('updated_at DESC')
-    
 
-    #@pedidos = Pedido.where("club_id=#{current_user.club_id} and estado_id != 99").update_all('estado_id = @estadopedido.estado_id')
     @contadorpedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5").count
     #@contadorpedidos = Responsable.where("user_id=#{current_user.id}").count
     #puts "algo"+@contadorpedidos.to_s
@@ -29,8 +23,7 @@ class PedidosController < ApplicationController
 
   def pedmanual
     @pedidos = Pedido.paginate(page: params[:page], per_page: 15).where("club_id=#{current_user.club_id} and no_items IS NULL").order('orden')
-#    @pedidos = Pedido.where(:estados).where(estados: { no_estado: 1 })
-    #@pedidos = Pedido.where("OMS LIKE ?","%" + params[:q] + "%")
+
   end
   # GET /pedidos/1
   # GET /pedidos/1.json
@@ -44,7 +37,6 @@ class PedidosController < ApplicationController
     #@userpedidos = current_user.id
     #puts 'user'+@userpedidos.to_s
 
-    #@pedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and responsables.pedido_id = pedidos.id")
 
     
   end
@@ -57,7 +49,11 @@ class PedidosController < ApplicationController
   end
 
   def pedidosasignados
-    @pedidos = Pedido.joins(:responsables).where("pedidos.estado_id != 5").order('created_at DESC')
+    #funciona
+    #@pedidos = Responsable.joins(:pedido).where("pedidos.estado_id != 5").order('created_at DESC')
+    
+    @pedidos = Pedido.includes(:responsables).where("pedidos.estado_id != 5").order('responsables.user_id DESC')
+
   end
 
   # GET /pedidos/new
