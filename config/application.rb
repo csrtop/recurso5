@@ -19,6 +19,9 @@ module Recurso5
     # Initialize configuration defaults for originally generated Rails version.
     config.active_storage.replace_on_assign_to_many = false
     config.load_defaults 6.0
+    config.i18n.default_locale = :es
+    config.time_zone = "Central America"
+    config.active_record.default_timezone = :local
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
