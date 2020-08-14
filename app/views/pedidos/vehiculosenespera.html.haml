@@ -12,7 +12,7 @@
             %th No Items
             %th Ubicación
             %th Asignar pedido
-
+            %th Asignado A
     %tbody
     - @pedidos.each do |pedido|
         %tr
@@ -25,6 +25,8 @@
             -#%td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
             %td= link_to 'Ver ubicacion', pedido_posiciones_path(pedido), class: 'btn btn-success'
             %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
+            - pedido.responsables.each do |cm|
+                %td= cm.user.last_name
             -#%td= link_to 'visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
             -#%td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
 
