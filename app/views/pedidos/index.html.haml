@@ -4,6 +4,10 @@
   .alert.alert-danger{:role => "alert"}
     %h2 Mis pedidos asignados: #{@contadorpedidos}
 
+-if @contadorvehiculos >= 1
+  .alert.alert-warning{:role => "alert"}
+    %h2 Vehiculos esperando: #{@contadorvehiculos}
+    
 -#%h1 Pedidos asignados : Pedido: #{@pedido.orden}
 -#= will_paginate @pedidos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
 -#.custom-file
@@ -21,7 +25,7 @@
   %thead
     %tr
       %th Orden
-      %th Oms / Vehiculo
+      %th OMS / Vehiculo
       %th Estado Actual
       %th Cambiar Estado 
       %th Ubicacion 
@@ -37,7 +41,8 @@
         %td= pedido.orden
         %td= pedido.OMS
         %td= pedido.estado.descripcion
-        %td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
+        %td= link_to 'Vehiculo en espera', edit_pedido_path(pedido), class: 'btn btn-info'
+        -#select_tag "pedido", options_from_collection_for_select(@pedido, "id", "descripcion")
         %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
         %td= pedido.no_items
         %td= pedido.socio

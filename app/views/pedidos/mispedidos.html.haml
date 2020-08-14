@@ -21,8 +21,8 @@
           %td= pedido.OMS
           %td= pedido.estado.descripcion
           %td= link_to 'Entregar', edit_pedido_path(pedido), class: 'btn btn-info'
-          %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
+          %td= link_to 'Ver ubicación', pedido_posiciones_path(pedido), class: 'btn btn-success'
           %td= pedido.no_items
           %td= pedido.socio
           %td= pedido.fecha_orden
-          %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+          %td= link_to 'Tomar foto o subir pdf', pedido_entregas_path(pedido), class: 'btn btn-primary'

@@ -14,6 +14,11 @@ class PedidosController < ApplicationController
     @contadorpedidos = Pedido.joins(:responsables).where("responsables.user_id = #{current_user.id} and pedidos.estado_id != 5").count
     #@contadorpedidos = Responsable.where("user_id=#{current_user.id}").count
     #puts "algo"+@contadorpedidos.to_s
+    
+    #cuenta vehiculos esperando a recibir productos
+    @contadorvehiculos = Pedido.where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id = 7").count
+    
+    
   end
 
   # Busqueda de pedidos
@@ -36,8 +41,6 @@ class PedidosController < ApplicationController
     #guarda usuario en variable
     #@userpedidos = current_user.id
     #puts 'user'+@userpedidos.to_s
-
-
     
   end
 
@@ -53,7 +56,10 @@ class PedidosController < ApplicationController
     #@pedidos = Responsable.joins(:pedido).where("pedidos.estado_id != 5").order('created_at DESC')
     
     @pedidos = Pedido.joins(:responsables).where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id != 5").order('responsables.user_id DESC')
+  end
 
+  def vehiculosenespera
+    @pedidos = Pedido.where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id = 7").order('orden DESC')
   end
 
   # GET /pedidos/new
@@ -121,7 +127,7 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :club_id, :estado_id, pictures: [])
+      params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :club_id, :estado_id, :horallegada, pictures: [])
       #params.require(:pedido).permit(:orden, :OMS, :no_items, :socio, :fecha_orden, :ubicacion_id, :tipo_entrega_id, :responsable_id, :club_id, pictures: [])
     end
 end

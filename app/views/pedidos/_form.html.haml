@@ -17,6 +17,10 @@
   .form-group
     = f.label :Estado
     = f.collection_select :estado_id, Estado.all, :id, :descripcion, {prompt: "seleccione estado"}
+  .form-group
+    = f.label :horallegada
+    = f.time_select :horallegada
+
   -# .field
   -#   = f.label :pictures
   -#   = f.file_field :pictures, multiple: true
@@ -34,7 +38,7 @@
     = f.text_field :socio  
   .form-group
     = f.label :fecha_orden
-    = f.date_select :fecha_orden, {:disabled => true}
+    = f.date_select :fecha_orden
   -# .field
   -#   = f.label :tipo_entrega
   -#   = f.text_field :tipo_entrega

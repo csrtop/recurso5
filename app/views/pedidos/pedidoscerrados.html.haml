@@ -21,6 +21,8 @@
             %td= pedido.socio
             %td= pedido.fecha_orden
             %td= link_to 'visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+            %td= link_to 'Re-abrir', edit_pedido_path(pedido), class: 'btn btn-danger'
+
     %br
 
 = will_paginate @pedidos, list_classes: %w(pagination justify-content-end)
