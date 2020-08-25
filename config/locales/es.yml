@@ -151,6 +151,7 @@ es:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+      new: Nuevo
   number:
     currency:
       format:
@@ -224,7 +225,7 @@ es:
         one:   "Mostrando 1 %{model}"
         other: "Mostrando all %{count} %{model}"
       single_page_html:
-        zero:  "Sin %{model} encontradas"
+        zero:  "No se encontraron pedidos"
         one:   "Mostrando <b>1</b> %{model}"
         other: "Mostrando <b>all&nbsp;%{count}</b> %{model}"
 

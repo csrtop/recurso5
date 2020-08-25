@@ -1,4 +1,4 @@
-%h1 Listado de pedidos
+%h1 Listado General de pedidos
 
 -if @contadorpedidos >= 1
   .alert.alert-danger{:role => "alert"}
@@ -43,12 +43,13 @@
         %td= pedido.estado.descripcion
         %td= link_to 'Vehiculo en espera', edit_pedido_path(pedido), class: 'btn btn-info'
         -#select_tag "pedido", options_from_collection_for_select(@pedido, "id", "descripcion")
+        
         %td= link_to 'Ubicar', pedido_posiciones_path(pedido), class: 'btn btn-success'
         %td= pedido.no_items
         %td= pedido.socio
         -#%td.neg= statement.paid
         %td= pedido.fecha_orden
-        %td= link_to 'Entregar - visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
+        %td= link_to 'Visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
         %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
         -#%td= link_to 'Editar', edit_pedido_path(pedido), class: 'btn btn-warning'
         -#%td= link_to 'Eliminar', pedido, method: :delete, data: { confirm: 'Are you sure?' }
@@ -57,7 +58,7 @@
 .text-center= page_entries_info
 
 
-= link_to 'Agregar pedido manual', new_pedido_path, class: 'btn btn-info btn-lg active'
+= link_to 'Agregar Vehiculo en espera', new_pedido_path, class: 'btn btn-warning btn-lg active'
 
 -# - if entrega.picture.attached?
 -#   %td= image_tag (url_for(entrega.thumbnail))#thumbnail  

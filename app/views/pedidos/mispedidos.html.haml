@@ -1,16 +1,18 @@
-.form-wrapper
-  %h1 Mis pedidos
+%h1 Mis Pedidos Asignados
 
-  .page-header
+.page-header
   %table.table.table-striped.table-bordered
     %thead
       %tr
         %th Orden
         %th Oms / Vehiculo
-        %th Estado Actual
-        %th Cambiar Estado 
-        %th Ubicacion 
         %th No Items
+        %th Estado Actual
+        %th Comentario
+        %th Cambiar Estado 
+        -#%th Ubicacion 
+        %th Pasillo 
+        %th Bahia 
         %th Socio
         %th Fecha orden
         %th Acciones
@@ -19,10 +21,15 @@
         %tr
           %td= pedido.orden
           %td= pedido.OMS
-          %td= pedido.estado.descripcion
-          %td= link_to 'Entregar', edit_pedido_path(pedido), class: 'btn btn-info'
-          %td= link_to 'Ver ubicación', pedido_posiciones_path(pedido), class: 'btn btn-success'
           %td= pedido.no_items
+          %td= pedido.estado.descripcion
+          - pedido.responsables.each do |cm|
+            %td= cm.comentario
+          %td= link_to 'Entregar', edit_pedido_path(pedido), class: 'btn btn-info'
+          -#%td= link_to 'Ver ubicación', pedido_posiciones_path(pedido), class: 'btn btn-success'
+          - pedido.posiciones.each do |cm|
+            %td= cm.pasillo.pasillo
+            %td= cm.bahia.bahia
           %td= pedido.socio
           %td= pedido.fecha_orden
           %td= link_to 'Tomar foto o subir pdf', pedido_entregas_path(pedido), class: 'btn btn-primary'

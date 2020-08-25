@@ -11,12 +11,12 @@
       -#%ul
         -#- @pedido.errors.full_messages.each do |message|
         -# %li= message
-  .form-group
+  -#.form-group
     -#= f.label :ubicacion
     -# = f.collection_select :ubicacion_id, Ubicacion.all, :id, :ubicacion, {prompt: "seleccione ubicacion"}
   .form-group
     = f.label :Estado
-    = f.collection_select :estado_id, Estado.all, :id, :descripcion, {prompt: "seleccione estado"}
+    = f.collection_select :estado_id, Estado.all, :id, :descripcion, {:selected => "7"}
   .form-group
     = f.label :horallegada
     = f.time_select :horallegada

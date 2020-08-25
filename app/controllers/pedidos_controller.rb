@@ -1,7 +1,6 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :update, :edit, :destroy]
   before_action :authenticate_user!
-
   # GET /pedidos
   # GET /pedidos.json
   def index
@@ -18,7 +17,9 @@ class PedidosController < ApplicationController
     #cuenta vehiculos esperando a recibir productos
     @contadorvehiculos = Pedido.where("pedidos.club_id=#{current_user.club_id} and pedidos.estado_id = 7").count
     
-    
+    #cuenta si ya está ubicado un pedido
+    #@contadorubicacion = Pedido.joins(:posiciones).where("pedidos.id = posiciones.pedido_id").count
+    #puts "contadorubica"+@contadorubicacion.to_s
   end
 
   # Busqueda de pedidos
@@ -75,7 +76,7 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-    @pedido.estado_id = 1
+    @pedido.estado_id = 5
     @pedido.club_id = current_user.club_id
     respond_to do |format|
       if @pedido.save
@@ -93,7 +94,7 @@ class PedidosController < ApplicationController
   def update
     respond_to do |format|
       if @pedido.update(pedido_params)
-        format.html { redirect_to pedidos_path, notice: 'Pedido was successfully updated.' }
+        format.html { redirect_to mispedidos_path, notice: 'Pedido was successfully updated.' }
         format.json { render :show, status: :ok, location: @pedido }
       else
         format.html { render :edit }
@@ -120,6 +121,7 @@ class PedidosController < ApplicationController
   #fin pedidos
   
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_pedido
       @pedido = Pedido.find(params[:id])

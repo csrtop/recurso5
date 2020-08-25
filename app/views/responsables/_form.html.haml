@@ -5,17 +5,16 @@
       %ul
         - @responsable.errors.full_messages.each do |message|
           %li= message
-
   .field
-    = f.label :vehiculo
-    = f.text_field :vehiculo
+    = f.hidden_field :vehiculo
+    = f.hidden_field :vehiculo
   .field
     = f.hidden_field :pedido
     = f.hidden_field :pedido_id
   .field
     = f.label :user
     -#= f.text_field :user_id, { :value => current_user.last_name}
-    = f.collection_select :user_id, User.where("club_id=#{current_user.club_id}"), :id, :last_name, {prompt: "seleccione Usuario"}
+    = f.collection_select :user_id, User.where("club_id=#{current_user.club_id}"), :id, :last_name, {prompt: "Seleccione Responsable"}
   .field
     = f.hidden_field :club
     = f.hidden_field :club_id, { :value => current_user.club_id}

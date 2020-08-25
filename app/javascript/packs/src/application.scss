@@ -160,3 +160,18 @@ $jumbotron-bg:                     white;
   margin: 2px 10px;
   display: inline;
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}

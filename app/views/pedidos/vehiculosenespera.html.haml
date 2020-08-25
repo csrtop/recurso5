@@ -11,10 +11,12 @@
             %th Tiempo en espera
             -#%th Estado del pedido
             -#%th No Items
-            %th Ubicación
+            %th Pasillo
+            %th Bahia
+            -#%th Ubicación
             %th Asignar pedido
             %th Asignado A
-            %th Vehiculo
+            %th Comentarios
     %tbody
     - @pedidos.each do |pedido|
         %tr
@@ -23,14 +25,17 @@
             %td= pedido.socio
             %td= pedido.horallegada
             %td= time_ago_in_words(pedido.horallegada)
+            - pedido.posiciones.each do |cm|
+                %td= cm.pasillo.pasillo
+                %td= cm.bahia.bahia
             -#%td= pedido.estado.descripcion
             -#%td= pedido.no_items
             -#%td= link_to 'Cambiar Estado / editar', edit_pedido_path(pedido), class: 'btn btn-info'
-            %td= link_to 'Ver ubicacion', pedido_posiciones_path(pedido), class: 'btn btn-success'
+            -#%td= link_to 'Ver ubicacion', pedido_posiciones_path(pedido), class: 'btn btn-success'
             %td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
             - pedido.responsables.each do |cm|
                 %td= cm.user.last_name
-                %td= cm.vehiculo
+                %td= cm.comentario
             -#%td= link_to 'visualizar', pedido_entregas_path(pedido), class: 'btn btn-primary'
             -#%td= link_to 'Asignar Pedido', pedido_responsables_path(pedido), class: 'btn btn-warning'
 
