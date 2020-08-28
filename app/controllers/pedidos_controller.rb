@@ -76,7 +76,7 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-    @pedido.estado_id = 5
+    @pedido.estado_id = 7
     @pedido.club_id = current_user.club_id
     respond_to do |format|
       if @pedido.save
