@@ -2,7 +2,7 @@ class ItemsImport
     include ActiveModel::Model
     require 'roo'
 
-    attr_accessor :file, :pedido, :club_id, :user
+    attr_accessor :file, :pedido, :club_id, :user, :current_user
 
 
     def initialize(attributes={})
@@ -48,8 +48,16 @@ class ItemsImport
             #fin busca descripcion del estado
             
             #raise current_user.club_id.to_s
-            pedido.club_id = row["club_id"]
-            #puts "eeeeeee"+pedido.orden.to_s
+            
+            #pedido.club_id = row["club_id"]
+            @primerclub = Club.where("no_club = '#{row["club_id"]}'").first
+            vclub = @primerclub.id
+            #puts "imprimir primer club"+vclub.to_s
+            pedido.club_id = vclub
+            
+            
+            #puts "eeeeeee"+current_user.club_id.to_s
+            
             #pedido.club_id = current_user.club_id
             pedido
         end
