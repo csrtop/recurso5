@@ -37,7 +37,7 @@ gem 'best_in_place', '~> 3.0.1'
 
 #add paperclip
 gem "paperclip", "~> 6.0.0"
-gem "image_processing", "~> 1.0"
+gem "image_processing", "~> 1.12"
 gem "roo", "~> 2.8.0" # upload xls
 gem 'roo-xls' #extract formats xls
 
